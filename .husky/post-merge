@@ -1,29 +1,6 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-# post-merge hook
-# Runs after git pull or git merge
-# $1 = flag (1 = squash merge, 0 = regular merge)
-
 CHANGED_FILES=$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD 2>/dev/null)
 
-# Check if package.json or lock files changed
-if echo "$CHANGED_FILES" | grep -qE "^package\.json$|^package-lock\.json$|^pnpm-lock\.yaml$|^yarn\.lock$"; then
+if echo "$CHANGED_FILES" | grep -qE "^package\.json$|^package-lock\.json$"; then
   echo "📦 Dependencies changed after merge. Running npm install..."
   npm install
-fi
-
-# Check if database migrations exist and changed
-if echo "$CHANGED_FILES" | grep -qE "^src/db/migrations/"; then
-  echo "🗄️  Database migrations changed. You may need to run migrations."
-fi
-
-# Check if .env.example changed
-if echo "$CHANGED_FILES" | grep -qE "^\.env\.example$"; then
-  echo "⚠️  .env.example has changed. Please update your .env file if needed."
-fi
-
-# Notify about config changes
-if echo "$CHANGED_FILES" | grep -qE "^(vite|tailwind|tsconfig|eslint|prettier)"; then
-  echo "⚙️  Configuration files changed. You may need to restart your dev server."
 fi
