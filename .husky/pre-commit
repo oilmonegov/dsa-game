@@ -1,1 +1,18 @@
+# Prevent direct commits to main/master branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+  echo "❌ Direct commits to '$BRANCH' branch are not allowed!"
+  echo ""
+  echo "Please create a feature branch and submit a pull request:"
+  echo "  git checkout -b feature/your-feature-name"
+  echo "  git commit -m 'your message'"
+  echo "  git push -u origin feature/your-feature-name"
+  echo ""
+  echo "To bypass this check (use sparingly):"
+  echo "  git commit --no-verify -m 'your message'"
+  exit 1
+fi
+
+# Run lint-staged
 npx lint-staged
