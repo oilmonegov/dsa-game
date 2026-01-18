@@ -5,6 +5,7 @@ import { initDatabase } from '@/db';
 import { GameMenu } from '@/components/GameMenu';
 import { TheoryQuiz } from '@/components/quiz';
 import { DiagramChallenge } from '@/components/diagram';
+import { TraversalGame } from '@/components/traversal';
 
 type AppView = 'menu' | 'theory' | 'diagrams' | 'traversals' | 'realWorld' | 'codeCompletion';
 
@@ -82,6 +83,7 @@ function App() {
       case 'diagrams':
         return <DiagramChallenge onBack={handleBackToMenu} />;
       case 'traversals':
+        return <TraversalGame onBack={handleBackToMenu} />;
       case 'realWorld':
       case 'codeCompletion':
         return (

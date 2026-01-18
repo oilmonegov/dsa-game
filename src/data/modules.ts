@@ -23,7 +23,7 @@ export const moduleConfigs: ModuleConfig[] = [
     description: 'Click nodes in the correct order for different tree traversals.',
     icon: '🎯',
     color: 'bg-purple-500',
-    available: false,
+    available: true,
   },
   {
     id: 'realWorld',

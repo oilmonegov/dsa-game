@@ -1,4 +1,5 @@
-import initSqlJs, { type Database as SqlJsDatabase, type SqlValue } from 'sql.js';
+import initSqlJs from 'sql.js';
+import type { Database as SqlJsDatabase, SqlValue } from 'sql.js';
 import type { ModuleId, AttemptRecord, QuestionAttempt, ModuleScore } from '@/types';
 
 // Initialize sql.js with the WASM file
@@ -55,7 +56,7 @@ export async function initDatabase(): Promise<SqlJsDatabase> {
   if (db) return db;
   if (dbInitPromise) return dbInitPromise;
 
-  dbInitPromise = (async () => {
+  dbInitPromise = (async (): Promise<SqlJsDatabase> => {
     try {
       const SQL = await initSqlJs({
         locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
@@ -63,20 +64,23 @@ export async function initDatabase(): Promise<SqlJsDatabase> {
 
       // Try to load existing database from localStorage
       const savedDb = localStorage.getItem(DB_STORAGE_KEY);
+      let database: SqlJsDatabase;
+
       if (savedDb) {
         const uint8Array = new Uint8Array(
           atob(savedDb)
             .split('')
             .map((c) => c.charCodeAt(0))
         );
-        db = new SQL.Database(uint8Array);
+        database = new SQL.Database(uint8Array);
       } else {
-        db = new SQL.Database();
-        db.run(SCHEMA);
-        saveDatabase();
+        database = new SQL.Database();
+        database.run(SCHEMA);
       }
 
-      return db;
+      db = database;
+      saveDatabase();
+      return database;
     } catch (error) {
       console.error('Failed to initialize database:', error);
       throw error;

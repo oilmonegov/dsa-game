@@ -190,3 +190,13 @@ export type StreakMultiplier = Record<number, number>;
 
 // Re-export diagram types
 export * from './diagram';
+
+// Re-export traversal types (excluding TraversalType which is already in diagram.ts)
+export type {
+  TreeNode,
+  TreeEdge,
+  TraversalChallenge,
+  TraversalState,
+  TraversalAlgorithm,
+} from './traversal';
+export { TRAVERSAL_ALGORITHMS } from './traversal';
