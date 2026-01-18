@@ -9,13 +9,7 @@ interface QuizProgressProps {
   timeSpent: number;
 }
 
-export function QuizProgress({
-  current,
-  total,
-  correct,
-  streak,
-  timeSpent,
-}: QuizProgressProps) {
+export function QuizProgress({ current, total, correct, streak, timeSpent }: QuizProgressProps) {
   return (
     <div className="mb-6">
       {/* Stats Row */}
@@ -32,9 +26,7 @@ export function QuizProgress({
           <span className="text-gray-600 font-mono text-sm bg-gray-100 px-2 py-1 rounded">
             {formatTime(timeSpent)}
           </span>
-          <span className="text-sm font-medium text-green-600">
-            {correct} correct
-          </span>
+          <span className="text-sm font-medium text-green-600">{correct} correct</span>
         </div>
       </div>
 

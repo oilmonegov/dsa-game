@@ -27,11 +27,33 @@ export const codeCompletionChallenges: CodeCompletionChallenge[] = [
 
     return -1`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 3, position: 12, length: 12, correctAnswer: 'arr.length - 1', hint: 'Last valid index' },
-      { id: 'BLANK2', lineNumber: 9, position: 19, length: 8, correctAnswer: 'mid', hint: 'What index did we find?' },
-      { id: 'BLANK3', lineNumber: 11, position: 19, length: 10, correctAnswer: 'mid + 1', hint: 'Search right half' },
+      {
+        id: 'BLANK1',
+        lineNumber: 3,
+        position: 12,
+        length: 12,
+        correctAnswer: 'arr.length - 1',
+        hint: 'Last valid index',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 9,
+        position: 19,
+        length: 8,
+        correctAnswer: 'mid',
+        hint: 'What index did we find?',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 11,
+        position: 19,
+        length: 10,
+        correctAnswer: 'mid + 1',
+        hint: 'Search right half',
+      },
     ],
-    explanation: 'Binary search divides the search space in half each iteration. We update left to mid+1 when target is larger, and right to mid-1 when target is smaller.',
+    explanation:
+      'Binary search divides the search space in half each iteration. We update left to mid+1 when target is larger, and right to mid-1 when target is smaller.',
     hint: 'Think about which half of the array to search next.',
   },
   {
@@ -57,11 +79,33 @@ export const codeCompletionChallenges: CodeCompletionChallenge[] = [
     function isEmpty():
         return items.length == ___BLANK3___`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 5, position: 14, length: 10, correctAnswer: 'append', hint: 'Add to the end' },
-      { id: 'BLANK2', lineNumber: 10, position: 21, length: 8, correctAnswer: 'pop', hint: 'Remove from end' },
-      { id: 'BLANK3', lineNumber: 13, position: 30, length: 5, correctAnswer: '0', hint: 'Empty means no items' },
+      {
+        id: 'BLANK1',
+        lineNumber: 5,
+        position: 14,
+        length: 10,
+        correctAnswer: 'append',
+        hint: 'Add to the end',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 10,
+        position: 21,
+        length: 8,
+        correctAnswer: 'pop',
+        hint: 'Remove from end',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 13,
+        position: 30,
+        length: 5,
+        correctAnswer: '0',
+        hint: 'Empty means no items',
+      },
     ],
-    explanation: 'Stacks use LIFO (Last-In-First-Out). Push adds to the top (end), pop removes from the top. isEmpty checks if length is 0.',
+    explanation:
+      'Stacks use LIFO (Last-In-First-Out). Push adds to the top (end), pop removes from the top. isEmpty checks if length is 0.',
     hint: 'Stacks add and remove from the same end.',
   },
   {
@@ -79,11 +123,33 @@ export const codeCompletionChallenges: CodeCompletionChallenge[] = [
             return ___BLANK3___
     return -1`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 2, position: 17, length: 12, correctAnswer: 'arr.length - 1', hint: 'Loop through all elements' },
-      { id: 'BLANK2', lineNumber: 3, position: 15, length: 5, correctAnswer: 'i', hint: 'Current index' },
-      { id: 'BLANK3', lineNumber: 4, position: 19, length: 5, correctAnswer: 'i', hint: 'Return found index' },
+      {
+        id: 'BLANK1',
+        lineNumber: 2,
+        position: 17,
+        length: 12,
+        correctAnswer: 'arr.length - 1',
+        hint: 'Loop through all elements',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 3,
+        position: 15,
+        length: 5,
+        correctAnswer: 'i',
+        hint: 'Current index',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 4,
+        position: 19,
+        length: 5,
+        correctAnswer: 'i',
+        hint: 'Return found index',
+      },
     ],
-    explanation: 'Linear search checks each element one by one until finding the target or reaching the end.',
+    explanation:
+      'Linear search checks each element one by one until finding the target or reaching the end.',
     hint: 'We need to check every element from start to end.',
   },
 
@@ -110,11 +176,27 @@ for i = 0 to n:
         print(i, j)`,
     blanks: [],
     complexityQuestions: [
-      { id: 'Q1', question: 'Array access by index (arr[5])', correctAnswer: 'O(1)', options: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'] },
-      { id: 'Q2', question: 'Linear search through array', correctAnswer: 'O(n)', options: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'] },
-      { id: 'Q3', question: 'Nested loops (both 0 to n)', correctAnswer: 'O(n²)', options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(2^n)'] },
+      {
+        id: 'Q1',
+        question: 'Array access by index (arr[5])',
+        correctAnswer: 'O(1)',
+        options: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'],
+      },
+      {
+        id: 'Q2',
+        question: 'Linear search through array',
+        correctAnswer: 'O(n)',
+        options: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'],
+      },
+      {
+        id: 'Q3',
+        question: 'Nested loops (both 0 to n)',
+        correctAnswer: 'O(n²)',
+        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(2^n)'],
+      },
     ],
-    explanation: 'Array access is O(1) - direct index. Linear search is O(n) - may check all elements. Nested loops multiply: n × n = O(n²).',
+    explanation:
+      'Array access is O(1) - direct index. Linear search is O(n) - may check all elements. Nested loops multiply: n × n = O(n²).',
     hint: 'Count how many times the innermost operation runs.',
   },
 
@@ -151,11 +233,33 @@ for i = 0 to n:
 
     return result`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 6, position: 20, length: 5, correctAnswer: '<=', hint: 'For stable sort, include equal' },
-      { id: 'BLANK2', lineNumber: 8, position: 16, length: 8, correctAnswer: 'i + 1', hint: 'Move to next left element' },
-      { id: 'BLANK3', lineNumber: 16, position: 23, length: 8, correctAnswer: 'left[i]', hint: 'Remaining left elements' },
+      {
+        id: 'BLANK1',
+        lineNumber: 6,
+        position: 20,
+        length: 5,
+        correctAnswer: '<=',
+        hint: 'For stable sort, include equal',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 8,
+        position: 16,
+        length: 8,
+        correctAnswer: 'i + 1',
+        hint: 'Move to next left element',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 16,
+        position: 23,
+        length: 8,
+        correctAnswer: 'left[i]',
+        hint: 'Remaining left elements',
+      },
     ],
-    explanation: 'Merge compares elements from both sorted arrays, taking the smaller one each time. Using <= makes it stable (preserves order of equal elements).',
+    explanation:
+      'Merge compares elements from both sorted arrays, taking the smaller one each time. Using <= makes it stable (preserves order of equal elements).',
     hint: 'We compare and take the smaller element, then move that pointer forward.',
   },
   {
@@ -178,11 +282,33 @@ for i = 0 to n:
 
     return root`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 2, position: 17, length: 6, correctAnswer: 'null', hint: 'Base case: empty spot' },
-      { id: 'BLANK2', lineNumber: 6, position: 28, length: 10, correctAnswer: 'root.left', hint: 'Recurse into left subtree' },
-      { id: 'BLANK3', lineNumber: 8, position: 29, length: 11, correctAnswer: 'root.right', hint: 'Recurse into right subtree' },
+      {
+        id: 'BLANK1',
+        lineNumber: 2,
+        position: 17,
+        length: 6,
+        correctAnswer: 'null',
+        hint: 'Base case: empty spot',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 6,
+        position: 28,
+        length: 10,
+        correctAnswer: 'root.left',
+        hint: 'Recurse into left subtree',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 8,
+        position: 29,
+        length: 11,
+        correctAnswer: 'root.right',
+        hint: 'Recurse into right subtree',
+      },
     ],
-    explanation: 'BST insert recursively finds the correct position. Values less than current go left, greater go right. When we hit null, we create the new node.',
+    explanation:
+      'BST insert recursively finds the correct position. Values less than current go left, greater go right. When we hit null, we create the new node.',
     hint: 'BST property: left < parent < right.',
   },
   {
@@ -210,11 +336,33 @@ for i = 0 to n:
             return null
         return items[___BLANK3___]`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 5, position: 14, length: 8, correctAnswer: 'append', hint: 'Add to the back' },
-      { id: 'BLANK2', lineNumber: 10, position: 21, length: 8, correctAnswer: 'remove', hint: 'Remove from front' },
-      { id: 'BLANK3', lineNumber: 15, position: 21, length: 5, correctAnswer: '0', hint: 'Front is first element' },
+      {
+        id: 'BLANK1',
+        lineNumber: 5,
+        position: 14,
+        length: 8,
+        correctAnswer: 'append',
+        hint: 'Add to the back',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 10,
+        position: 21,
+        length: 8,
+        correctAnswer: 'remove',
+        hint: 'Remove from front',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 15,
+        position: 21,
+        length: 5,
+        correctAnswer: '0',
+        hint: 'Front is first element',
+      },
     ],
-    explanation: 'Queues use FIFO (First-In-First-Out). Enqueue adds to back (append), dequeue removes from front (index 0).',
+    explanation:
+      'Queues use FIFO (First-In-First-Out). Enqueue adds to back (append), dequeue removes from front (index 0).',
     hint: 'Queue: first in, first out - like a line of people.',
   },
 
@@ -245,11 +393,27 @@ function mergeSort(arr):
 Divide and conquer with pivot`,
     blanks: [],
     complexityQuestions: [
-      { id: 'Q1', question: 'Bubble Sort (average/worst case)', correctAnswer: 'O(n²)', options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'] },
-      { id: 'Q2', question: 'Merge Sort (all cases)', correctAnswer: 'O(n log n)', options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'] },
-      { id: 'Q3', question: 'Quick Sort (average case)', correctAnswer: 'O(n log n)', options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'] },
+      {
+        id: 'Q1',
+        question: 'Bubble Sort (average/worst case)',
+        correctAnswer: 'O(n²)',
+        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+      },
+      {
+        id: 'Q2',
+        question: 'Merge Sort (all cases)',
+        correctAnswer: 'O(n log n)',
+        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+      },
+      {
+        id: 'Q3',
+        question: 'Quick Sort (average case)',
+        correctAnswer: 'O(n log n)',
+        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+      },
     ],
-    explanation: 'Bubble sort has nested loops = O(n²). Merge/Quick sort divide the problem (log n levels) and do O(n) work per level = O(n log n).',
+    explanation:
+      'Bubble sort has nested loops = O(n²). Merge/Quick sort divide the problem (log n levels) and do O(n) work per level = O(n log n).',
     hint: 'Divide-and-conquer algorithms often have log n in their complexity.',
   },
 
@@ -275,22 +439,49 @@ Divide and conquer with pivot`,
     swap(arr[___BLANK3___], arr[high])
     return i + 1`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 2, position: 16, length: 6, correctAnswer: 'high', hint: 'Use last element as pivot' },
-      { id: 'BLANK2', lineNumber: 7, position: 16, length: 8, correctAnswer: 'i + 1', hint: 'Move partition boundary' },
-      { id: 'BLANK3', lineNumber: 10, position: 14, length: 8, correctAnswer: 'i + 1', hint: 'Place pivot in correct position' },
+      {
+        id: 'BLANK1',
+        lineNumber: 2,
+        position: 16,
+        length: 6,
+        correctAnswer: 'high',
+        hint: 'Use last element as pivot',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 7,
+        position: 16,
+        length: 8,
+        correctAnswer: 'i + 1',
+        hint: 'Move partition boundary',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 10,
+        position: 14,
+        length: 8,
+        correctAnswer: 'i + 1',
+        hint: 'Place pivot in correct position',
+      },
     ],
     complexityQuestions: [
-      { id: 'Q1', question: 'Time complexity of partition function', correctAnswer: 'O(n)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'] },
+      {
+        id: 'Q1',
+        question: 'Time complexity of partition function',
+        correctAnswer: 'O(n)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+      },
     ],
-    explanation: 'Partition uses the last element as pivot and rearranges so smaller elements are left, larger are right. It scans once through the array = O(n).',
+    explanation:
+      'Partition uses the last element as pivot and rearranges so smaller elements are left, larger are right. It scans once through the array = O(n).',
     hint: 'The partition function processes each element exactly once.',
   },
 
   // HARD - Fill in the blanks
   {
     id: 10,
-    title: 'Dijkstra\'s Algorithm',
-    description: 'Complete Dijkstra\'s shortest path algorithm.',
+    title: "Dijkstra's Algorithm",
+    description: "Complete Dijkstra's shortest path algorithm.",
     type: 'fill-blank',
     difficulty: 'hard',
     category: 'Graph Algorithms',
@@ -316,11 +507,33 @@ Divide and conquer with pivot`,
 
     return dist`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 3, position: 18, length: 5, correctAnswer: '0', hint: 'Distance to start from start' },
-      { id: 'BLANK2', lineNumber: 11, position: 12, length: 10, correctAnswer: 'continue', hint: 'Skip if already processed better' },
-      { id: 'BLANK3', lineNumber: 14, position: 33, length: 15, correctAnswer: 'weight(u, v)', hint: 'Edge weight to neighbor' },
+      {
+        id: 'BLANK1',
+        lineNumber: 3,
+        position: 18,
+        length: 5,
+        correctAnswer: '0',
+        hint: 'Distance to start from start',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 11,
+        position: 12,
+        length: 10,
+        correctAnswer: 'continue',
+        hint: 'Skip if already processed better',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 14,
+        position: 33,
+        length: 15,
+        correctAnswer: 'weight(u, v)',
+        hint: 'Edge weight to neighbor',
+      },
     ],
-    explanation: 'Dijkstra uses a priority queue to always process the closest unvisited node. Distance to start is 0, and we relax edges to find shorter paths.',
+    explanation:
+      'Dijkstra uses a priority queue to always process the closest unvisited node. Distance to start is 0, and we relax edges to find shorter paths.',
     hint: 'We always process the node with minimum distance first.',
   },
   {
@@ -352,11 +565,33 @@ Divide and conquer with pivot`,
 
     return result`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 7, position: 21, length: 6, correctAnswer: 'pop', hint: 'LIFO - Last In First Out' },
-      { id: 'BLANK2', lineNumber: 12, position: 16, length: 6, correctAnswer: 'add', hint: 'Mark as visited' },
-      { id: 'BLANK3', lineNumber: 16, position: 32, length: 8, correctAnswer: 'visited', hint: 'Check if already seen' },
+      {
+        id: 'BLANK1',
+        lineNumber: 7,
+        position: 21,
+        length: 6,
+        correctAnswer: 'pop',
+        hint: 'LIFO - Last In First Out',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 12,
+        position: 16,
+        length: 6,
+        correctAnswer: 'add',
+        hint: 'Mark as visited',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 16,
+        position: 32,
+        length: 8,
+        correctAnswer: 'visited',
+        hint: 'Check if already seen',
+      },
     ],
-    explanation: 'DFS uses a stack (LIFO) to explore as deep as possible before backtracking. We mark nodes visited to avoid cycles.',
+    explanation:
+      'DFS uses a stack (LIFO) to explore as deep as possible before backtracking. We mark nodes visited to avoid cycles.',
     hint: 'DFS goes deep first - stack gives us LIFO behavior.',
   },
   {
@@ -385,11 +620,33 @@ Divide and conquer with pivot`,
 
     return result`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 8, position: 22, length: 10, correctAnswer: 'dequeue', hint: 'FIFO - First In First Out' },
-      { id: 'BLANK2', lineNumber: 14, position: 22, length: 8, correctAnswer: 'enqueue', hint: 'Add to back of queue' },
-      { id: 'BLANK3', lineNumber: 14, position: 31, length: 10, correctAnswer: 'neighbor', hint: 'Add the unvisited neighbor' },
+      {
+        id: 'BLANK1',
+        lineNumber: 8,
+        position: 22,
+        length: 10,
+        correctAnswer: 'dequeue',
+        hint: 'FIFO - First In First Out',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 14,
+        position: 22,
+        length: 8,
+        correctAnswer: 'enqueue',
+        hint: 'Add to back of queue',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 14,
+        position: 31,
+        length: 10,
+        correctAnswer: 'neighbor',
+        hint: 'Add the unvisited neighbor',
+      },
     ],
-    explanation: 'BFS uses a queue (FIFO) to explore level by level. We mark nodes visited when adding to queue to prevent duplicates.',
+    explanation:
+      'BFS uses a queue (FIFO) to explore level by level. We mark nodes visited when adding to queue to prevent duplicates.',
     hint: 'BFS explores all neighbors at current depth before going deeper.',
   },
 
@@ -419,11 +676,27 @@ for i = 0 to n:
             C[i][j] += A[i][k] * B[k][j]`,
     blanks: [],
     complexityQuestions: [
-      { id: 'Q1', question: 'Binary Search', correctAnswer: 'O(log n)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'] },
-      { id: 'Q2', question: 'Naive Recursive Fibonacci', correctAnswer: 'O(2^n)', options: ['O(n)', 'O(n²)', 'O(2^n)', 'O(n!)'] },
-      { id: 'Q3', question: 'Naive Matrix Multiplication', correctAnswer: 'O(n³)', options: ['O(n)', 'O(n²)', 'O(n³)', 'O(2^n)'] },
+      {
+        id: 'Q1',
+        question: 'Binary Search',
+        correctAnswer: 'O(log n)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
+      },
+      {
+        id: 'Q2',
+        question: 'Naive Recursive Fibonacci',
+        correctAnswer: 'O(2^n)',
+        options: ['O(n)', 'O(n²)', 'O(2^n)', 'O(n!)'],
+      },
+      {
+        id: 'Q3',
+        question: 'Naive Matrix Multiplication',
+        correctAnswer: 'O(n³)',
+        options: ['O(n)', 'O(n²)', 'O(n³)', 'O(2^n)'],
+      },
     ],
-    explanation: 'Binary search halves input = O(log n). Naive Fibonacci has overlapping subproblems = O(2^n). Matrix multiply has 3 nested loops = O(n³).',
+    explanation:
+      'Binary search halves input = O(log n). Naive Fibonacci has overlapping subproblems = O(2^n). Matrix multiply has 3 nested loops = O(n³).',
     hint: 'Count how the work grows as n increases.',
   },
 
@@ -447,15 +720,47 @@ for i = 0 to n:
     memo[n] = fibMemo(n-1, memo) + fibMemo(___BLANK3___, memo)
     return memo[n]`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 3, position: 15, length: 8, correctAnswer: 'memo[n]', hint: 'Return cached result' },
-      { id: 'BLANK2', lineNumber: 5, position: 12, length: 5, correctAnswer: '1', hint: 'Base case: fib(0)=0, fib(1)=1' },
-      { id: 'BLANK3', lineNumber: 8, position: 43, length: 6, correctAnswer: 'n - 2', hint: 'Second recursive call' },
+      {
+        id: 'BLANK1',
+        lineNumber: 3,
+        position: 15,
+        length: 8,
+        correctAnswer: 'memo[n]',
+        hint: 'Return cached result',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 5,
+        position: 12,
+        length: 5,
+        correctAnswer: '1',
+        hint: 'Base case: fib(0)=0, fib(1)=1',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 8,
+        position: 43,
+        length: 6,
+        correctAnswer: 'n - 2',
+        hint: 'Second recursive call',
+      },
     ],
     complexityQuestions: [
-      { id: 'Q1', question: 'Time complexity with memoization', correctAnswer: 'O(n)', options: ['O(1)', 'O(n)', 'O(n²)', 'O(2^n)'] },
-      { id: 'Q2', question: 'Space complexity (memo table)', correctAnswer: 'O(n)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'] },
+      {
+        id: 'Q1',
+        question: 'Time complexity with memoization',
+        correctAnswer: 'O(n)',
+        options: ['O(1)', 'O(n)', 'O(n²)', 'O(2^n)'],
+      },
+      {
+        id: 'Q2',
+        question: 'Space complexity (memo table)',
+        correctAnswer: 'O(n)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+      },
     ],
-    explanation: 'Memoization caches results, so each fib(k) is computed only once. We compute n values = O(n) time, store n values = O(n) space.',
+    explanation:
+      'Memoization caches results, so each fib(k) is computed only once. We compute n values = O(n) time, store n values = O(n) space.',
     hint: 'Memoization prevents redundant calculations.',
   },
   {
@@ -481,14 +786,41 @@ for i = 0 to n:
         else:
             ___BLANK3___`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 9, position: 32, length: 8, correctAnswer: 'parent', hint: 'Compare with parent' },
-      { id: 'BLANK2', lineNumber: 11, position: 20, length: 8, correctAnswer: 'parent', hint: 'Move up to parent position' },
-      { id: 'BLANK3', lineNumber: 13, position: 12, length: 8, correctAnswer: 'break', hint: 'Heap property satisfied' },
+      {
+        id: 'BLANK1',
+        lineNumber: 9,
+        position: 32,
+        length: 8,
+        correctAnswer: 'parent',
+        hint: 'Compare with parent',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 11,
+        position: 20,
+        length: 8,
+        correctAnswer: 'parent',
+        hint: 'Move up to parent position',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 13,
+        position: 12,
+        length: 8,
+        correctAnswer: 'break',
+        hint: 'Heap property satisfied',
+      },
     ],
     complexityQuestions: [
-      { id: 'Q1', question: 'Heap insert time complexity', correctAnswer: 'O(log n)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'] },
+      {
+        id: 'Q1',
+        question: 'Heap insert time complexity',
+        correctAnswer: 'O(log n)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
+      },
     ],
-    explanation: 'Heap insert adds at the end and bubbles up. The tree height is log n, so worst case we swap log n times = O(log n).',
+    explanation:
+      'Heap insert adds at the end and bubbles up. The tree height is log n, so worst case we swap log n times = O(log n).',
     hint: 'How many levels might we need to bubble up?',
   },
   {
@@ -515,15 +847,47 @@ for i = 0 to n:
 
     table[index].append({key: key, value: ___BLANK3___})`,
     blanks: [
-      { id: 'BLANK1', lineNumber: 2, position: 12, length: 6, correctAnswer: 'hash', hint: 'Compute hash of key' },
-      { id: 'BLANK2', lineNumber: 10, position: 24, length: 5, correctAnswer: 'key', hint: 'Compare with input key' },
-      { id: 'BLANK3', lineNumber: 14, position: 46, length: 8, correctAnswer: 'value', hint: 'Store the value' },
+      {
+        id: 'BLANK1',
+        lineNumber: 2,
+        position: 12,
+        length: 6,
+        correctAnswer: 'hash',
+        hint: 'Compute hash of key',
+      },
+      {
+        id: 'BLANK2',
+        lineNumber: 10,
+        position: 24,
+        length: 5,
+        correctAnswer: 'key',
+        hint: 'Compare with input key',
+      },
+      {
+        id: 'BLANK3',
+        lineNumber: 14,
+        position: 46,
+        length: 8,
+        correctAnswer: 'value',
+        hint: 'Store the value',
+      },
     ],
     complexityQuestions: [
-      { id: 'Q1', question: 'Average case insert/lookup', correctAnswer: 'O(1)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'] },
-      { id: 'Q2', question: 'Worst case (all collisions)', correctAnswer: 'O(n)', options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'] },
+      {
+        id: 'Q1',
+        question: 'Average case insert/lookup',
+        correctAnswer: 'O(1)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+      },
+      {
+        id: 'Q2',
+        question: 'Worst case (all collisions)',
+        correctAnswer: 'O(n)',
+        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'],
+      },
     ],
-    explanation: 'Hash tables have O(1) average case due to direct indexing. Worst case is O(n) if all keys hash to the same bucket (rare with good hash function).',
+    explanation:
+      'Hash tables have O(1) average case due to direct indexing. Worst case is O(n) if all keys hash to the same bucket (rare with good hash function).',
     hint: 'Consider what happens with no collisions vs all collisions.',
   },
 ];

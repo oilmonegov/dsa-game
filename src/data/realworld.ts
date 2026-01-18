@@ -9,11 +9,7 @@ export const realWorldChallenges: MatchChallenge[] = [
     description: 'Match common data structures to their everyday applications.',
     difficulty: 'easy',
     category: 'Fundamentals',
-    structures: [
-      DATA_STRUCTURES.stack,
-      DATA_STRUCTURES.queue,
-      DATA_STRUCTURES.array,
-    ],
+    structures: [DATA_STRUCTURES.stack, DATA_STRUCTURES.queue, DATA_STRUCTURES.array],
     applications: [
       {
         id: 'undo',
@@ -50,11 +46,7 @@ export const realWorldChallenges: MatchChallenge[] = [
     description: 'How does your browser use data structures?',
     difficulty: 'easy',
     category: 'Web Development',
-    structures: [
-      DATA_STRUCTURES.stack,
-      DATA_STRUCTURES.hashTable,
-      DATA_STRUCTURES.queue,
-    ],
+    structures: [DATA_STRUCTURES.stack, DATA_STRUCTURES.hashTable, DATA_STRUCTURES.queue],
     applications: [
       {
         id: 'history',
@@ -91,11 +83,7 @@ export const realWorldChallenges: MatchChallenge[] = [
     description: 'Data structures powering your OS.',
     difficulty: 'easy',
     category: 'Systems',
-    structures: [
-      DATA_STRUCTURES.queue,
-      DATA_STRUCTURES.stack,
-      DATA_STRUCTURES.linkedList,
-    ],
+    structures: [DATA_STRUCTURES.queue, DATA_STRUCTURES.stack, DATA_STRUCTURES.linkedList],
     applications: [
       {
         id: 'cpu',

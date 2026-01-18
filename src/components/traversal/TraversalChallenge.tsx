@@ -111,9 +111,7 @@ export function TraversalSelectionDisplay({
           })}
         </div>
       ) : (
-        <p className="text-gray-400 text-sm italic">
-          Click on nodes to build your traversal
-        </p>
+        <p className="text-gray-400 text-sm italic">Click on nodes to build your traversal</p>
       )}
     </div>
   );
@@ -134,25 +132,23 @@ function ChallengeResultSection({
     <div
       className={`
         p-6 border-t
-        ${isCorrect
-          ? 'bg-gradient-to-br from-mint-50 to-success-50'
-          : 'bg-gradient-to-br from-amber-50 to-orange-50'}
+        ${
+          isCorrect
+            ? 'bg-gradient-to-br from-mint-50 to-success-50'
+            : 'bg-gradient-to-br from-amber-50 to-orange-50'
+        }
       `}
     >
       <div className="flex items-start gap-3">
         <span className="text-2xl">{isCorrect ? '✅' : '💡'}</span>
         <div>
-          <h3 className="font-semibold mb-1">
-            {isCorrect ? 'Excellent!' : 'Explanation'}
-          </h3>
+          <h3 className="font-semibold mb-1">{isCorrect ? 'Excellent!' : 'Explanation'}</h3>
           <p className="text-sm opacity-90 mb-3">{explanation}</p>
 
           {!isCorrect && (
             <div className="bg-white/50 rounded-lg p-3">
               <span className="text-sm font-medium">Correct order: </span>
-              <span className="font-mono text-sm">
-                {correctOrder.join(' → ')}
-              </span>
+              <span className="font-mono text-sm">{correctOrder.join(' → ')}</span>
             </div>
           )}
         </div>

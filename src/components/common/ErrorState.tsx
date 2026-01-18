@@ -41,9 +41,7 @@ export function ErrorState({
         <div className="bg-gradient-to-r from-coral-400 to-rose-500 px-6 py-8 text-center text-white">
           <div className="flex justify-center mb-4">
             {icon || (
-              <div className="text-6xl animate-wiggle">
-                {variant === 'playful' ? '🤔' : '⚠️'}
-              </div>
+              <div className="text-6xl animate-wiggle">{variant === 'playful' ? '🤔' : '⚠️'}</div>
             )}
           </div>
           <h2 className="text-xl font-bold text-shadow">{title}</h2>
@@ -55,9 +53,7 @@ export function ErrorState({
 
           {variant === 'playful' && (
             <div className="bg-coral-50 rounded-xl p-4 mb-6 text-left">
-              <p className="text-sm text-coral-700 font-medium mb-2">
-                Things you can try:
-              </p>
+              <p className="text-sm text-coral-700 font-medium mb-2">Things you can try:</p>
               <ul className="text-sm text-coral-600 space-y-1">
                 <li>• Refresh the page</li>
                 <li>• Check your internet connection</li>
@@ -114,9 +110,7 @@ export function EmptyState({
 }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center animate-fade-in">
-      <div className="text-5xl mb-4 animate-float">
-        {typeof icon === 'string' ? icon : icon}
-      </div>
+      <div className="text-5xl mb-4 animate-float">{typeof icon === 'string' ? icon : icon}</div>
       <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
       <p className="text-gray-500 mb-4 max-w-sm">{message}</p>
       {action && (

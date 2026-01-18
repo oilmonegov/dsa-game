@@ -121,12 +121,7 @@ interface MatchProgressProps {
   onReset: () => void;
 }
 
-export function MatchProgress({
-  matchCount,
-  totalCount,
-  showResult,
-  onReset,
-}: MatchProgressProps) {
+export function MatchProgress({ matchCount, totalCount, showResult, onReset }: MatchProgressProps) {
   return (
     <div className="mt-6 p-4 bg-gray-50/80 rounded-xl">
       <div className="flex items-center justify-between">
@@ -192,16 +187,8 @@ export function MatchActions({
       <Button variant="secondary" onClick={onReset}>
         Reset
       </Button>
-      <Button
-        variant="primary"
-        onClick={onSubmit}
-        fullWidth
-        disabled={!allMatched}
-        bounce
-      >
-        {allMatched
-          ? 'Check Matches'
-          : `Match ${remainingCount} more`}
+      <Button variant="primary" onClick={onSubmit} fullWidth disabled={!allMatched} bounce>
+        {allMatched ? 'Check Matches' : `Match ${remainingCount} more`}
       </Button>
     </div>
   );
@@ -213,18 +200,16 @@ interface MatchResultSectionProps {
   explanations: Record<string, string>;
 }
 
-function MatchResultSection({
-  isCorrect,
-  structures,
-  explanations,
-}: MatchResultSectionProps) {
+function MatchResultSection({ isCorrect, structures, explanations }: MatchResultSectionProps) {
   return (
     <div
       className={`
         p-6 border-t
-        ${isCorrect
-          ? 'bg-gradient-to-br from-mint-50 to-success-50'
-          : 'bg-gradient-to-br from-amber-50 to-orange-50'}
+        ${
+          isCorrect
+            ? 'bg-gradient-to-br from-mint-50 to-success-50'
+            : 'bg-gradient-to-br from-amber-50 to-orange-50'
+        }
       `}
     >
       <div className="flex items-start gap-3 mb-4">
@@ -242,9 +227,7 @@ function MatchResultSection({
               <span>{structure.icon}</span>
               <span className="font-medium">{structure.name}</span>
             </div>
-            <p className="text-sm text-gray-600">
-              {explanations[structure.id]}
-            </p>
+            <p className="text-sm text-gray-600">{explanations[structure.id]}</p>
           </div>
         ))}
       </div>

@@ -121,9 +121,7 @@ export function getPerformanceMessages(
   } else if (percentage >= 50) {
     messages.push('Keep practicing! Review the explanations for the questions you missed.');
   } else {
-    messages.push(
-      "Don't give up! Focus on understanding the core concepts and try again."
-    );
+    messages.push("Don't give up! Focus on understanding the core concepts and try again.");
   }
 
   // Speed feedback

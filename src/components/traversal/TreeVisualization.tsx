@@ -204,13 +204,7 @@ export function TreeVisualization({
               />
 
               {/* Inner highlight */}
-              <circle
-                cx={node.x}
-                cy={node.y - 6}
-                r="16"
-                fill="white"
-                opacity={0.15}
-              />
+              <circle cx={node.x} cy={node.y - 6} r="16" fill="white" opacity={0.15} />
 
               {/* Node label */}
               <text

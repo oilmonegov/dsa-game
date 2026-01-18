@@ -102,16 +102,8 @@ export function GameActions({
       <Button variant="secondary" onClick={onReset}>
         Reset
       </Button>
-      <Button
-        variant="primary"
-        onClick={onSubmit}
-        fullWidth
-        disabled={!allNodesSelected}
-        bounce
-      >
-        {allNodesSelected
-          ? 'Check Answer'
-          : `Select ${remainingCount} more`}
+      <Button variant="primary" onClick={onSubmit} fullWidth disabled={!allNodesSelected} bounce>
+        {allNodesSelected ? 'Check Answer' : `Select ${remainingCount} more`}
       </Button>
     </div>
   );

@@ -20,9 +20,11 @@ const positionStyles: Record<TooltipPosition, string> = {
 
 const arrowStyles: Record<TooltipPosition, string> = {
   top: 'top-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-b-transparent border-t-gray-800',
-  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-t-transparent border-b-gray-800',
+  bottom:
+    'bottom-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-t-transparent border-b-gray-800',
   left: 'left-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-r-transparent border-l-gray-800',
-  right: 'right-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-gray-800',
+  right:
+    'right-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-gray-800',
 };
 
 export function Tooltip({
@@ -78,9 +80,7 @@ export function Tooltip({
           <div className="relative px-3 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap">
             {content}
             {/* Arrow */}
-            <div
-              className={`absolute w-0 h-0 border-[6px] ${arrowStyles[position]}`}
-            />
+            <div className={`absolute w-0 h-0 border-[6px] ${arrowStyles[position]}`} />
           </div>
         </div>
       )}

@@ -12,7 +12,7 @@ export const theoryQuestions: Question[] = [
     explanation:
       'Array elements are stored in contiguous memory locations, so accessing any element by index is done in constant time O(1) using direct address calculation.',
     realWorld:
-      "When you access a specific row in a spreadsheet by clicking on row number 500, the software jumps directly to that row without scanning through rows 1-499.",
+      'When you access a specific row in a spreadsheet by clicking on row number 500, the software jumps directly to that row without scanning through rows 1-499.',
   },
   {
     id: 2,
@@ -47,8 +47,7 @@ export const theoryQuestions: Question[] = [
     id: 4,
     category: 'Data Structures Basics',
     difficulty: 'medium',
-    question:
-      'Which operation involves accessing each record in a data structure exactly once?',
+    question: 'Which operation involves accessing each record in a data structure exactly once?',
     options: ['Searching', 'Traversing', 'Inserting', 'Sorting'],
     correctAnswer: 1,
     explanation:
@@ -71,7 +70,7 @@ export const theoryQuestions: Question[] = [
     explanation:
       "ADT (Abstract Data Type) defines a data type by its behavior (operations) rather than its implementation. It separates 'what' operations are available from 'how' they're implemented.",
     realWorld:
-      "A Stack ADT defines push and pop operations. Whether implemented using an array or linked list, users interact with the same operations—the implementation details are hidden.",
+      'A Stack ADT defines push and pop operations. Whether implemented using an array or linked list, users interact with the same operations—the implementation details are hidden.',
   },
 
   // === LINEAR DATA STRUCTURES ===
@@ -80,12 +79,7 @@ export const theoryQuestions: Question[] = [
     category: 'Linear Data Structures',
     difficulty: 'easy',
     question: 'In a Stack, elements are added and removed from:',
-    options: [
-      'Both ends',
-      'The same end (top)',
-      'The front only',
-      'Random positions',
-    ],
+    options: ['Both ends', 'The same end (top)', 'The front only', 'Random positions'],
     correctAnswer: 1,
     explanation:
       'A Stack follows LIFO (Last In, First Out) principle—the last element added is the first to be removed. All operations happen at the top.',
@@ -109,12 +103,7 @@ export const theoryQuestions: Question[] = [
     category: 'Linear Data Structures',
     difficulty: 'medium',
     question: 'In a Queue, elements are added at ___ and removed from ___',
-    options: [
-      'front, rear',
-      'rear, front',
-      'top, bottom',
-      'any position, any position',
-    ],
+    options: ['front, rear', 'rear, front', 'top, bottom', 'any position, any position'],
     correctAnswer: 1,
     explanation:
       'A Queue follows FIFO (First In, First Out) principle. New elements are added at the rear (enqueue), and elements are removed from the front (dequeue).',
@@ -125,8 +114,7 @@ export const theoryQuestions: Question[] = [
     id: 9,
     category: 'Linear Data Structures',
     difficulty: 'medium',
-    question:
-      'Which data structure would you use for implementing an Undo/Redo feature?',
+    question: 'Which data structure would you use for implementing an Undo/Redo feature?',
     options: ['Queue', 'Stack', 'Linked List', 'Array'],
     correctAnswer: 1,
     explanation:
@@ -169,8 +157,7 @@ export const theoryQuestions: Question[] = [
     id: 12,
     category: 'Non-Linear Data Structures',
     difficulty: 'medium',
-    question:
-      'In a Graph, what represents the connections between nodes?',
+    question: 'In a Graph, what represents the connections between nodes?',
     options: ['Vertices', 'Edges', 'Roots', 'Leaves'],
     correctAnswer: 1,
     explanation:
@@ -182,8 +169,7 @@ export const theoryQuestions: Question[] = [
     id: 13,
     category: 'Non-Linear Data Structures',
     difficulty: 'medium',
-    question:
-      'Which data structure is best suited for representing a social network?',
+    question: 'Which data structure is best suited for representing a social network?',
     options: ['Array', 'Stack', 'Queue', 'Graph'],
     correctAnswer: 3,
     explanation:
@@ -291,8 +277,7 @@ export const theoryQuestions: Question[] = [
     id: 20,
     category: 'Binary Trees',
     difficulty: 'easy',
-    question:
-      'In a binary tree, each node can have at most how many children?',
+    question: 'In a binary tree, each node can have at most how many children?',
     options: ['1', '2', '3', 'Unlimited'],
     correctAnswer: 1,
     explanation:
@@ -321,8 +306,7 @@ export const theoryQuestions: Question[] = [
     id: 22,
     category: 'Binary Trees',
     difficulty: 'hard',
-    question:
-      'In a Full Binary Tree of height h, how many leaf nodes are there?',
+    question: 'In a Full Binary Tree of height h, how many leaf nodes are there?',
     options: ['h', '2h', '2^h', '2^(h+1) - 1'],
     correctAnswer: 2,
     explanation:
@@ -378,8 +362,7 @@ export const theoryQuestions: Question[] = [
     id: 26,
     category: 'Traversals',
     difficulty: 'medium',
-    question:
-      'Which traversal gives sorted output when applied to a Binary Search Tree?',
+    question: 'Which traversal gives sorted output when applied to a Binary Search Tree?',
     options: ['Preorder', 'Inorder', 'Postorder', 'Level Order'],
     correctAnswer: 1,
     explanation:
@@ -420,14 +403,8 @@ export const theoryQuestions: Question[] = [
     id: 29,
     category: 'Traversals',
     difficulty: 'hard',
-    question:
-      'For the tree A(B(D,E), C(F)), what is the postorder traversal?',
-    options: [
-      'A, B, D, E, C, F',
-      'D, E, B, F, C, A',
-      'D, B, E, A, F, C',
-      'A, B, C, D, E, F',
-    ],
+    question: 'For the tree A(B(D,E), C(F)), what is the postorder traversal?',
+    options: ['A, B, D, E, C, F', 'D, E, B, F, C, A', 'D, B, E, A, F, C', 'A, B, C, D, E, F'],
     correctAnswer: 1,
     explanation:
       'Postorder (Left → Right → Root): Start at A, go left to B, go left to D (leaf, visit D), go right to E (leaf, visit E), visit B. Go to C, visit F, visit C. Finally visit A. Result: D, E, B, F, C, A',
@@ -439,12 +416,7 @@ export const theoryQuestions: Question[] = [
     category: 'Traversals',
     difficulty: 'hard',
     question: 'Inorder traversal is only defined for:',
-    options: [
-      'All trees',
-      'Binary trees only',
-      'Complete trees only',
-      'BST only',
-    ],
+    options: ['All trees', 'Binary trees only', 'Complete trees only', 'BST only'],
     correctAnswer: 1,
     explanation:
       "Inorder (Left → Root → Right) requires distinguishing between left and right children, which only binary trees have. General trees with unordered children don't have a defined 'left' or 'right'.",
@@ -468,7 +440,7 @@ export const theoryQuestions: Question[] = [
     explanation:
       "Big-O describes the upper bound (worst case) of how an algorithm's running time grows as input size increases. It ignores constants and lower-order terms.",
     realWorld:
-      "O(n) means if you double the input, time roughly doubles. O(n²) means doubling input quadruples time. This helps predict how algorithms scale.",
+      'O(n) means if you double the input, time roughly doubles. O(n²) means doubling input quadruples time. This helps predict how algorithms scale.',
   },
   {
     id: 32,
@@ -510,8 +482,7 @@ export const theoryQuestions: Question[] = [
     id: 35,
     category: 'Algorithm Analysis',
     difficulty: 'hard',
-    question:
-      'For Insertion Sort, what input causes the worst-case performance?',
+    question: 'For Insertion Sort, what input causes the worst-case performance?',
     options: [
       'Already sorted array',
       'Random array',
@@ -540,8 +511,7 @@ export const theoryQuestions: Question[] = [
     id: 37,
     category: 'Algorithm Analysis',
     difficulty: 'hard',
-    question:
-      'What is the time complexity of accessing an element in a balanced BST?',
+    question: 'What is the time complexity of accessing an element in a balanced BST?',
     options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
     correctAnswer: 1,
     explanation:
@@ -555,12 +525,7 @@ export const theoryQuestions: Question[] = [
     difficulty: 'medium',
     question:
       'Which algorithm design approach solves problems by breaking them into smaller subproblems, solving each independently, then combining results?',
-    options: [
-      'Greedy Algorithm',
-      'Dynamic Programming',
-      'Divide and Conquer',
-      'Brute Force',
-    ],
+    options: ['Greedy Algorithm', 'Dynamic Programming', 'Divide and Conquer', 'Brute Force'],
     correctAnswer: 2,
     explanation:
       'Divide and Conquer: (1) Divide into subproblems, (2) Conquer by solving recursively, (3) Combine solutions. Examples: Merge Sort, Quick Sort, Binary Search.',
@@ -599,7 +564,7 @@ export const theoryQuestions: Question[] = [
     explanation:
       "Greedy algorithms make the best choice at each step without considering future consequences. They don't always find the optimal solution but are often fast and simple.",
     realWorld:
-      "Making change with fewest coins: always pick the largest coin that fits. For 67¢ with US coins: 50¢ + 10¢ + 5¢ + 1¢ + 1¢ = 5 coins. Works well for US coins!",
+      'Making change with fewest coins: always pick the largest coin that fits. For 67¢ with US coins: 50¢ + 10¢ + 5¢ + 1¢ + 1¢ = 5 coins. Works well for US coins!',
   },
 
   // === REAL-WORLD APPLICATIONS ===
@@ -607,8 +572,7 @@ export const theoryQuestions: Question[] = [
     id: 41,
     category: 'Real-World Applications',
     difficulty: 'easy',
-    question:
-      'Which data structure is used to implement the function call stack in programming?',
+    question: 'Which data structure is used to implement the function call stack in programming?',
     options: ['Queue', 'Stack', 'Array', 'Tree'],
     correctAnswer: 1,
     explanation:
@@ -644,8 +608,7 @@ export const theoryQuestions: Question[] = [
     id: 44,
     category: 'Real-World Applications',
     difficulty: 'medium',
-    question:
-      'Google Maps finding the shortest route uses which data structure primarily?',
+    question: 'Google Maps finding the shortest route uses which data structure primarily?',
     options: ['Stack', 'Queue', 'Tree', 'Graph'],
     correctAnswer: 3,
     explanation:
@@ -657,14 +620,8 @@ export const theoryQuestions: Question[] = [
     id: 45,
     category: 'Real-World Applications',
     difficulty: 'hard',
-    question:
-      'Database indexes commonly use which data structure for efficient searching?',
-    options: [
-      'Array',
-      'Stack',
-      'B-Tree (a type of balanced tree)',
-      'Queue',
-    ],
+    question: 'Database indexes commonly use which data structure for efficient searching?',
+    options: ['Array', 'Stack', 'B-Tree (a type of balanced tree)', 'Queue'],
     correctAnswer: 2,
     explanation:
       'Databases use B-Trees (balanced trees optimized for disk access) for indexes. They provide O(log n) search, insert, and delete while minimizing disk reads.',
@@ -681,7 +638,7 @@ export const theoryQuestions: Question[] = [
     explanation:
       'The DOM is a tree structure: the document is the root, html is its child, body and head are children of html, and so on. Each element can have child elements.',
     realWorld:
-      'When you use document.querySelector(), you\'re traversing the DOM tree. Parent elements contain child elements, just like folders contain files.',
+      "When you use document.querySelector(), you're traversing the DOM tree. Parent elements contain child elements, just like folders contain files.",
   },
   {
     id: 47,

@@ -72,10 +72,7 @@ export function GameResults({
   return (
     <>
       {showConfettiEffect && (
-        <Confetti
-          active={showConfettiEffect}
-          onComplete={() => setShowConfettiEffect(false)}
-        />
+        <Confetti active={showConfettiEffect} onComplete={() => setShowConfettiEffect(false)} />
       )}
 
       <div className="max-w-2xl mx-auto animate-bounce-in">
@@ -90,9 +87,7 @@ export function GameResults({
             <div className={`text-6xl mb-3 ${passed ? 'animate-bounce-in' : ''}`}>
               {displayIcon}
             </div>
-            <h2 className="text-2xl font-bold mb-1 text-shadow">
-              {gradeInfo.label}
-            </h2>
+            <h2 className="text-2xl font-bold mb-1 text-shadow">{gradeInfo.label}</h2>
             <p className="opacity-90">
               {practiceMode ? 'Practice Complete' : subtitle || `${title} Complete`}
             </p>
@@ -101,21 +96,13 @@ export function GameResults({
           {/* Stats Grid */}
           <div className="p-6">
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <StatCard
-                value={`${percentage}%`}
-                label="Accuracy"
-                color="text-primary-600"
-              />
+              <StatCard value={`${percentage}%`} label="Accuracy" color="text-primary-600" />
               <StatCard
                 value={`${score.correct}/${score.total}`}
                 label="Correct"
                 color="text-success-600"
               />
-              <StatCard
-                value={formatTime(timeSpent)}
-                label="Time"
-                color="text-accent-600"
-              />
+              <StatCard value={formatTime(timeSpent)} label="Time" color="text-accent-600" />
             </div>
 
             {/* Additional Stats */}
@@ -157,20 +144,10 @@ export function GameResults({
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                variant="secondary"
-                onClick={onBack}
-                fullWidth
-                bounce
-              >
+              <Button variant="secondary" onClick={onBack} fullWidth bounce>
                 Back to Menu
               </Button>
-              <Button
-                variant="gradient"
-                onClick={onPlayAgain}
-                fullWidth
-                bounce
-              >
+              <Button variant="gradient" onClick={onPlayAgain} fullWidth bounce>
                 Play Again
               </Button>
             </div>

@@ -90,18 +90,14 @@ export function QuestionCard({
               disabled={showResult}
               className={getOptionStyles(index)}
             >
-              <span className={getOptionBadgeStyles(index)}>
-                {String.fromCharCode(65 + index)}
-              </span>
+              <span className={getOptionBadgeStyles(index)}>{String.fromCharCode(65 + index)}</span>
               <span className="flex-1">{option}</span>
               {showResult && index === question.correctAnswer && (
                 <span className="text-green-500 text-lg">✓</span>
               )}
-              {showResult &&
-                index === selectedAnswer &&
-                index !== question.correctAnswer && (
-                  <span className="text-red-500 text-lg">✗</span>
-                )}
+              {showResult && index === selectedAnswer && index !== question.correctAnswer && (
+                <span className="text-red-500 text-lg">✗</span>
+              )}
             </button>
           ))}
         </div>
@@ -116,9 +112,7 @@ export function QuestionCard({
         >
           <div
             className={`flex items-start gap-3 mb-4 ${
-              selectedAnswer === question.correctAnswer
-                ? 'text-green-800'
-                : 'text-orange-800'
+              selectedAnswer === question.correctAnswer ? 'text-green-800' : 'text-orange-800'
             }`}
           >
             <span className="text-2xl">
@@ -126,9 +120,7 @@ export function QuestionCard({
             </span>
             <div>
               <h3 className="font-semibold mb-1">
-                {selectedAnswer === question.correctAnswer
-                  ? 'Correct!'
-                  : 'Not quite right'}
+                {selectedAnswer === question.correctAnswer ? 'Correct!' : 'Not quite right'}
               </h3>
               <p className="text-sm opacity-90">{question.explanation}</p>
             </div>

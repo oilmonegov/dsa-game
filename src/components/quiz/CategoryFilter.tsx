@@ -6,10 +6,7 @@ interface CategoryFilterProps {
   onSelectCategory: (category: QuestionCategory | 'all') => void;
 }
 
-export function CategoryFilter({
-  selectedCategory,
-  onSelectCategory,
-}: CategoryFilterProps) {
+export function CategoryFilter({ selectedCategory, onSelectCategory }: CategoryFilterProps) {
   // Get unique categories from questions
   const categories: (QuestionCategory | 'all')[] = [
     'all',

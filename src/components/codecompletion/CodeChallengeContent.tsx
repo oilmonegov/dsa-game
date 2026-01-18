@@ -46,10 +46,7 @@ export function CodeChallengeContent({
       instruction="Fill in the blanks to complete the algorithm"
       footer={
         showResult && (
-          <CodeResultSection
-            isCorrect={allCorrect}
-            explanation={challenge.explanation}
-          />
+          <CodeResultSection isCorrect={allCorrect} explanation={challenge.explanation} />
         )
       }
     >
@@ -156,16 +153,8 @@ export function CodeActions({
       <Button variant="secondary" onClick={onReset}>
         Reset
       </Button>
-      <Button
-        variant="primary"
-        onClick={onSubmit}
-        fullWidth
-        disabled={!allAnswered}
-        bounce
-      >
-        {allAnswered
-          ? 'Check Answers'
-          : `Answer ${remainingCount} more`}
+      <Button variant="primary" onClick={onSubmit} fullWidth disabled={!allAnswered} bounce>
+        {allAnswered ? 'Check Answers' : `Answer ${remainingCount} more`}
       </Button>
     </div>
   );
@@ -181,17 +170,17 @@ function CodeResultSection({ isCorrect, explanation }: CodeResultSectionProps) {
     <div
       className={`
         p-6 border-t
-        ${isCorrect
-          ? 'bg-gradient-to-br from-mint-50 to-success-50'
-          : 'bg-gradient-to-br from-candy-50 to-rose-50'}
+        ${
+          isCorrect
+            ? 'bg-gradient-to-br from-mint-50 to-success-50'
+            : 'bg-gradient-to-br from-candy-50 to-rose-50'
+        }
       `}
     >
       <div className="flex items-start gap-3">
         <span className="text-2xl">{isCorrect ? '✅' : '💡'}</span>
         <div>
-          <h3 className="font-semibold mb-1">
-            {isCorrect ? 'Perfect!' : 'Explanation'}
-          </h3>
+          <h3 className="font-semibold mb-1">{isCorrect ? 'Perfect!' : 'Explanation'}</h3>
           <p className="text-sm opacity-90">{explanation}</p>
         </div>
       </div>

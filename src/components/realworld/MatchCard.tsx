@@ -51,9 +51,7 @@ export function StructureCard({
           <p className="text-xs text-gray-500 line-clamp-2">{structure.description}</p>
         </div>
       </div>
-      {isMatched && (
-        <div className="mt-2 text-xs font-medium text-purple-600">✓ Matched</div>
-      )}
+      {isMatched && <div className="mt-2 text-xs font-medium text-purple-600">✓ Matched</div>}
     </button>
   );
 }
@@ -83,9 +81,7 @@ export function ApplicationCardComponent({
 }: ApplicationCardProps) {
   const getCardStyle = () => {
     if (showResult && isMatched) {
-      return isCorrect
-        ? 'bg-green-100 border-green-500'
-        : 'bg-red-100 border-red-500';
+      return isCorrect ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500';
     }
     if (isMatched) {
       return 'bg-purple-100 border-purple-500';
@@ -104,11 +100,7 @@ export function ApplicationCardComponent({
         ${disabled || isMatched ? '' : 'cursor-pointer'}
       `}
     >
-      <button
-        onClick={onClick}
-        disabled={disabled || isMatched}
-        className="w-full text-left"
-      >
+      <button onClick={onClick} disabled={disabled || isMatched} className="w-full text-left">
         <div className="flex items-start gap-3">
           <span className="text-2xl">{application.icon}</span>
           <div>

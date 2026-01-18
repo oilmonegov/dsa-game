@@ -1,6 +1,14 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 
-type AnimationType = 'bounce' | 'shake' | 'pulse' | 'pop' | 'fade' | 'slide' | 'wiggle' | 'confetti';
+type AnimationType =
+  | 'bounce'
+  | 'shake'
+  | 'pulse'
+  | 'pop'
+  | 'fade'
+  | 'slide'
+  | 'wiggle'
+  | 'confetti';
 
 interface UseAnimationOptions {
   duration?: number;
@@ -104,39 +112,48 @@ export function useMultiAnimation(): UseMultiAnimationReturn {
     sequenceRef.current = [];
   }, []);
 
-  const triggerAnimation = useCallback((type: AnimationType, duration?: number) => {
-    clearAllTimeouts();
-    setActiveAnimation(type);
+  const triggerAnimation = useCallback(
+    (type: AnimationType, duration?: number) => {
+      clearAllTimeouts();
+      setActiveAnimation(type);
 
-    const finalDuration = duration ?? animationDurations[type];
-    timeoutRef.current = setTimeout(() => {
-      setActiveAnimation(null);
-    }, finalDuration);
-  }, [clearAllTimeouts]);
+      const finalDuration = duration ?? animationDurations[type];
+      timeoutRef.current = setTimeout(() => {
+        setActiveAnimation(null);
+      }, finalDuration);
+    },
+    [clearAllTimeouts]
+  );
 
-  const triggerSequence = useCallback((sequence: AnimationType[], delay = 500) => {
-    clearAllTimeouts();
+  const triggerSequence = useCallback(
+    (sequence: AnimationType[], delay = 500) => {
+      clearAllTimeouts();
 
-    sequence.forEach((type, index) => {
-      const timeout = setTimeout(() => {
-        setActiveAnimation(type);
+      sequence.forEach((type, index) => {
+        const timeout = setTimeout(() => {
+          setActiveAnimation(type);
 
-        const endTimeout = setTimeout(() => {
-          if (index === sequence.length - 1) {
-            setActiveAnimation(null);
-          }
-        }, animationDurations[type]);
+          const endTimeout = setTimeout(() => {
+            if (index === sequence.length - 1) {
+              setActiveAnimation(null);
+            }
+          }, animationDurations[type]);
 
-        sequenceRef.current.push(endTimeout);
-      }, index * delay);
+          sequenceRef.current.push(endTimeout);
+        }, index * delay);
 
-      sequenceRef.current.push(timeout);
-    });
-  }, [clearAllTimeouts]);
+        sequenceRef.current.push(timeout);
+      });
+    },
+    [clearAllTimeouts]
+  );
 
-  const getAnimationClass = useCallback((type: AnimationType) => {
-    return activeAnimation === type ? animationClasses[type] : '';
-  }, [activeAnimation]);
+  const getAnimationClass = useCallback(
+    (type: AnimationType) => {
+      return activeAnimation === type ? animationClasses[type] : '';
+    },
+    [activeAnimation]
+  );
 
   const reset = useCallback(() => {
     clearAllTimeouts();

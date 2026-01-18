@@ -68,9 +68,7 @@ export function ComplexitySelector({
                 `}
               >
                 {option}
-                {showResult && question.correctAnswer === option && (
-                  <span className="ml-1">✓</span>
-                )}
+                {showResult && question.correctAnswer === option && <span className="ml-1">✓</span>}
               </button>
             ))}
           </div>

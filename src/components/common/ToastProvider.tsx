@@ -16,10 +16,22 @@ interface ToastItem {
 
 interface ToastContextValue {
   toast: (options: Omit<ToastItem, 'id'>) => string;
-  success: (message: string, options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>) => string;
-  error: (message: string, options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>) => string;
-  warning: (message: string, options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>) => string;
-  info: (message: string, options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>) => string;
+  success: (
+    message: string,
+    options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>
+  ) => string;
+  error: (
+    message: string,
+    options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>
+  ) => string;
+  warning: (
+    message: string,
+    options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>
+  ) => string;
+  info: (
+    message: string,
+    options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>
+  ) => string;
   dismiss: (id: string) => void;
   dismissAll: () => void;
 }
@@ -37,7 +49,13 @@ export function useToast() {
 interface ToastProviderProps {
   children: ReactNode;
   maxToasts?: number;
-  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
+  position?:
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'top-center'
+    | 'bottom-center';
 }
 
 const positionStyles = {
@@ -79,10 +97,7 @@ export function ToastProvider({
     setToasts([]);
   }, []);
 
-  const toast = useCallback(
-    (options: Omit<ToastItem, 'id'>) => addToast(options),
-    [addToast]
-  );
+  const toast = useCallback((options: Omit<ToastItem, 'id'>) => addToast(options), [addToast]);
 
   const success = useCallback(
     (message: string, options?: Partial<Omit<ToastItem, 'id' | 'message' | 'variant'>>) =>

@@ -72,10 +72,7 @@ export function RealWorldMatch({ onBack }: RealWorldMatchProps) {
   }, [initializeChallenges]);
 
   // Get matched structure IDs
-  const matchedStructureIds = useMemo(
-    () => new Set(matches.map((m) => m.structureId)),
-    [matches]
-  );
+  const matchedStructureIds = useMemo(() => new Set(matches.map((m) => m.structureId)), [matches]);
 
   // Get matched application IDs
   const matchedApplicationIds = useMemo(
@@ -327,7 +324,7 @@ export function RealWorldMatch({ onBack }: RealWorldMatchProps) {
               <span className="text-2xl">{allCorrect ? '✅' : '💡'}</span>
               <div>
                 <h3 className="font-semibold mb-1">
-                  {allCorrect ? 'Perfect Match!' : 'Here\'s why each match works:'}
+                  {allCorrect ? 'Perfect Match!' : "Here's why each match works:"}
                 </h3>
               </div>
             </div>
