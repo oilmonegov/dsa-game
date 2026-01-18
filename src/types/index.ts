@@ -200,3 +200,6 @@ export type {
   TraversalAlgorithm,
 } from './traversal';
 export { TRAVERSAL_ALGORITHMS } from './traversal';
+
+// Re-export real-world match types
+export * from './realworld';

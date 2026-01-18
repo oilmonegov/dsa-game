@@ -6,6 +6,7 @@ import { GameMenu } from '@/components/GameMenu';
 import { TheoryQuiz } from '@/components/quiz';
 import { DiagramChallenge } from '@/components/diagram';
 import { TraversalGame } from '@/components/traversal';
+import { RealWorldMatch } from '@/components/realworld';
 
 type AppView = 'menu' | 'theory' | 'diagrams' | 'traversals' | 'realWorld' | 'codeCompletion';
 
@@ -85,6 +86,7 @@ function App() {
       case 'traversals':
         return <TraversalGame onBack={handleBackToMenu} />;
       case 'realWorld':
+        return <RealWorldMatch onBack={handleBackToMenu} />;
       case 'codeCompletion':
         return (
           <div className="text-center py-20">
@@ -147,7 +149,7 @@ function App() {
           <div className="text-center text-sm text-gray-500">
             <p>
               Built for CSC 731 - Data Structures & Algorithms •{' '}
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="/docs/CSC731_Complete_Study_Guide.html" className="text-blue-500 hover:underline">
                 View Study Guide
               </a>
             </p>

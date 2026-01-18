@@ -31,7 +31,7 @@ export const moduleConfigs: ModuleConfig[] = [
     description: 'Match data structures to their real-world applications.',
     icon: '🔗',
     color: 'bg-orange-500',
-    available: false,
+    available: true,
   },
   {
     id: 'codeCompletion',
