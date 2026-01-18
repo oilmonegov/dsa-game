@@ -1,4 +1,4 @@
-import initSqlJs, { Database as SqlJsDatabase } from 'sql.js';
+import initSqlJs, { type Database as SqlJsDatabase, type SqlValue } from 'sql.js';
 import type { ModuleId, AttemptRecord, QuestionAttempt, ModuleScore } from '@/types';
 
 // Initialize sql.js with the WASM file
@@ -58,7 +58,7 @@ export async function initDatabase(): Promise<SqlJsDatabase> {
   dbInitPromise = (async () => {
     try {
       const SQL = await initSqlJs({
-        locateFile: (file) => `https://sql.js.org/dist/${file}`,
+        locateFile: (file: string) => `https://sql.js.org/dist/${file}`,
       });
 
       // Try to load existing database from localStorage
@@ -139,7 +139,7 @@ export async function getModuleScores(module: ModuleId): Promise<AttemptRecord[]
 
   if (!result[0]) return [];
 
-  return result[0].values.map((row) => ({
+  return result[0].values.map((row: SqlValue[]) => ({
     id: row[0] as number,
     module: row[1] as ModuleId,
     correct: row[2] as number,
@@ -236,7 +236,7 @@ export async function getQuestionAttempts(module: ModuleId): Promise<QuestionAtt
 
   if (!result[0]) return [];
 
-  return result[0].values.map((row) => ({
+  return result[0].values.map((row: SqlValue[]) => ({
     id: row[0] as number,
     questionId: row[1] as number,
     module: row[2] as ModuleId,
@@ -263,7 +263,7 @@ export async function getMostMissedQuestions(
 
   if (!result[0]) return [];
 
-  return result[0].values.map((row) => ({
+  return result[0].values.map((row: SqlValue[]) => ({
     questionId: row[0] as number,
     missCount: row[1] as number,
   }));
@@ -278,10 +278,7 @@ export async function getSetting(key: string): Promise<string | null> {
 
 export async function setSetting(key: string, value: string): Promise<void> {
   const database = await getDatabase();
-  database.run(
-    `INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)`,
-    [key, value]
-  );
+  database.run(`INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)`, [key, value]);
   saveDatabase();
 }
 

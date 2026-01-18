@@ -41,6 +41,11 @@ coverage
 # TypeScript cache
 *.tsbuildinfo
 
+# Generated declaration files from config
+*.config.d.ts
+*.config.d.ts.map
+*.config.js
+
 # Database
 *.db
 *.sqlite

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Question, QuestionCategory, QuizState } from '@/types';
+import type { QuestionCategory, QuizState } from '@/types';
 import { theoryQuestions } from '@/data/questions';
 import { calculatePoints } from '@/utils/scoring';
 
