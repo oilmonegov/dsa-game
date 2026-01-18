@@ -4,6 +4,7 @@ import { useGameStore } from '@/store';
 import { initDatabase } from '@/db';
 import { GameMenu } from '@/components/GameMenu';
 import { TheoryQuiz } from '@/components/quiz';
+import { DiagramChallenge } from '@/components/diagram';
 
 type AppView = 'menu' | 'theory' | 'diagrams' | 'traversals' | 'realWorld' | 'codeCompletion';
 
@@ -79,6 +80,7 @@ function App() {
       case 'theory':
         return <TheoryQuiz onBack={handleBackToMenu} />;
       case 'diagrams':
+        return <DiagramChallenge onBack={handleBackToMenu} />;
       case 'traversals':
       case 'realWorld':
       case 'codeCompletion':

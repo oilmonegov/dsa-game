@@ -4,8 +4,7 @@ export const moduleConfigs: ModuleConfig[] = [
   {
     id: 'theory',
     title: 'Theory Quiz',
-    description:
-      'Test your knowledge with multiple choice questions covering all DSA topics.',
+    description: 'Test your knowledge with multiple choice questions covering all DSA topics.',
     icon: '📚',
     color: 'bg-blue-500',
     available: true,
@@ -13,11 +12,10 @@ export const moduleConfigs: ModuleConfig[] = [
   {
     id: 'diagrams',
     title: 'Diagram Challenge',
-    description:
-      'Complete interactive tree and graph diagrams by placing nodes correctly.',
+    description: 'Complete interactive tree and graph diagrams by placing nodes correctly.',
     icon: '🌳',
     color: 'bg-green-500',
-    available: false,
+    available: true,
   },
   {
     id: 'traversals',
@@ -38,8 +36,7 @@ export const moduleConfigs: ModuleConfig[] = [
   {
     id: 'codeCompletion',
     title: 'Code Completion',
-    description:
-      'Fill in missing parts of algorithm pseudocode and identify complexities.',
+    description: 'Fill in missing parts of algorithm pseudocode and identify complexities.',
     icon: '💻',
     color: 'bg-pink-500',
     available: false,

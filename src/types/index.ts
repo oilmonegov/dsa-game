@@ -187,3 +187,6 @@ export type TimeBonus = {
 };
 
 export type StreakMultiplier = Record<number, number>;
+
+// Re-export diagram types
+export * from './diagram';
