@@ -109,22 +109,20 @@ export function TreeVisualization({
         {/* Nodes */}
         {nodes.map((node) => {
           const state = nodeStates[node.id];
-          const isSelectable = !disabled && !state?.selected;
+          const isClickable = !disabled && !showResult;
 
           return (
             <g
               key={node.id}
-              onClick={() => isSelectable && onNodeClick(node.id)}
-              className={`transition-all duration-200 ${isSelectable ? 'cursor-pointer' : ''}`}
+              onClick={() => isClickable && onNodeClick(node.id)}
+              className={`${isClickable ? 'cursor-pointer' : ''}`}
             >
               {/* Node circle */}
               <circle
                 cx={node.x}
                 cy={node.y}
                 r="24"
-                className={`${getNodeColor(node.id)} transition-all duration-200 ${
-                  isSelectable ? 'hover:scale-110' : ''
-                }`}
+                className={getNodeColor(node.id)}
                 style={{
                   fill:
                     showResult && state?.isCorrect === true
@@ -143,7 +141,7 @@ export function TreeVisualization({
                           ? '#7c3aed'
                           : '#2563eb',
                   strokeWidth: 3,
-                  transform: isSelectable ? undefined : undefined,
+                  transition: 'fill 0.15s, stroke 0.15s',
                 }}
               />
 

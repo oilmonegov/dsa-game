@@ -105,13 +105,18 @@ export const useTraversalStore = create<TraversalStore>((set, get) => ({
     const state = get();
     if (state.showResult || state.isAnimating) return;
 
-    // Don't allow selecting the same node twice
-    if (state.selectedNodes.includes(nodeId)) return;
-
-    // Check if all nodes have been selected
     const challenge = state.currentChallenge;
     if (!challenge) return;
 
+    // Toggle: if already selected, remove it
+    if (state.selectedNodes.includes(nodeId)) {
+      set({
+        selectedNodes: state.selectedNodes.filter((id) => id !== nodeId),
+      });
+      return;
+    }
+
+    // Don't allow more selections than needed
     if (state.selectedNodes.length >= challenge.correctOrder.length) return;
 
     set({
