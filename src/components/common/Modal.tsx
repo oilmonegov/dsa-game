@@ -138,16 +138,10 @@ export function Modal({
         )}
 
         {/* Content */}
-        <div className="px-6 py-4 max-h-[70vh] overflow-y-auto scrollbar-thin">
-          {children}
-        </div>
+        <div className="px-6 py-4 max-h-[70vh] overflow-y-auto scrollbar-thin">{children}</div>
 
         {/* Footer */}
-        {footer && (
-          <div className="px-6 py-4 border-t bg-gray-50/80 rounded-b-2xl">
-            {footer}
-          </div>
-        )}
+        {footer && <div className="px-6 py-4 border-t bg-gray-50/80 rounded-b-2xl">{footer}</div>}
       </div>
     </div>
   );
@@ -176,7 +170,8 @@ export function ConfirmModal({
   variant = 'info',
   loading = false,
 }: ConfirmModalProps) {
-  const confirmVariant = variant === 'danger' ? 'danger' : variant === 'warning' ? 'secondary' : 'primary';
+  const confirmVariant =
+    variant === 'danger' ? 'danger' : variant === 'warning' ? 'secondary' : 'primary';
 
   return (
     <Modal
@@ -189,12 +184,7 @@ export function ConfirmModal({
           <Button variant="secondary" onClick={onClose} fullWidth disabled={loading}>
             {cancelLabel}
           </Button>
-          <Button
-            variant={confirmVariant}
-            onClick={onConfirm}
-            fullWidth
-            loading={loading}
-          >
+          <Button variant={confirmVariant} onClick={onConfirm} fullWidth loading={loading}>
             {confirmLabel}
           </Button>
         </div>

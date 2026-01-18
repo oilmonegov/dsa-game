@@ -1,4 +1,5 @@
-import { useEffect, useRef, useCallback } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { useEffect, useRef, useCallback, useState } from 'react';
 
 interface ConfettiProps {
   active: boolean;
@@ -173,34 +174,30 @@ export function Confetti({
 }
 
 export function useConfetti() {
-  const triggerRef = useRef<(() => void) | null>(null);
-
-  const ConfettiComponent = useCallback(
-    ({ onComplete }: { onComplete?: () => void }) => {
-      const [active, setActive] = useState(false);
-
-      triggerRef.current = () => setActive(true);
-
-      return (
-        <Confetti
-          active={active}
-          onComplete={() => {
-            setActive(false);
-            onComplete?.();
-          }}
-        />
-      );
-    },
-    []
-  );
+  const [active, setActive] = useState(false);
 
   const trigger = useCallback(() => {
-    triggerRef.current?.();
+    setActive(true);
   }, []);
 
-  return { Confetti: ConfettiComponent, trigger };
-}
+  const reset = useCallback(() => {
+    setActive(false);
+  }, []);
 
-import { useState } from 'react';
+  const ConfettiWithState = useCallback(
+    ({ onComplete }: { onComplete?: () => void }) => (
+      <Confetti
+        active={active}
+        onComplete={() => {
+          setActive(false);
+          onComplete?.();
+        }}
+      />
+    ),
+    [active]
+  );
+
+  return { Confetti: ConfettiWithState, trigger, reset, active };
+}
 
 export default Confetti;

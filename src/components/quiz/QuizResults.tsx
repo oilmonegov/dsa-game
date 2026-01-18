@@ -1,12 +1,6 @@
 import type { Question } from '@/types';
 import { Button, Card } from '@/components/common';
-import {
-  calculatePercentage,
-  isPassed,
-  getGrade,
-  formatTime,
-  getImprovementAreas,
-} from '@/utils';
+import { calculatePercentage, isPassed, getGrade, formatTime, getImprovementAreas } from '@/utils';
 
 interface QuizResultsProps {
   score: {
@@ -66,9 +60,7 @@ export function QuizResults({
               <div className="text-sm text-gray-500">Correct</div>
             </div>
             <div className="text-center p-4 bg-gray-50 rounded-xl">
-              <div className="text-3xl font-bold text-purple-600">
-                {formatTime(timeSpent)}
-              </div>
+              <div className="text-3xl font-bold text-purple-600">{formatTime(timeSpent)}</div>
               <div className="text-sm text-gray-500">Time</div>
             </div>
           </div>
@@ -97,16 +89,11 @@ export function QuizResults({
               <h3 className="font-semibold text-gray-700 mb-3">Areas to Review:</h3>
               <div className="space-y-2">
                 {improvementAreas.map((area, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 p-3 bg-red-50 rounded-lg"
-                  >
+                  <div key={index} className="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
                     <span className="text-red-500">⚠️</span>
                     <div className="flex-1">
                       <span className="font-medium text-gray-800">{area.category}</span>
-                      <span className="text-sm text-gray-500 ml-2">
-                        ({area.count} missed)
-                      </span>
+                      <span className="text-sm text-gray-500 ml-2">({area.count} missed)</span>
                     </div>
                   </div>
                 ))}

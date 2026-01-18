@@ -56,28 +56,31 @@ export function useScore({
     return percentage >= PASSING_PERCENTAGE;
   }, [percentage]);
 
-  const addCorrect = useCallback((customPoints?: number) => {
-    const newStreak = streak + 1;
-    setStreak(newStreak);
-    setMaxStreak((prev) => Math.max(prev, newStreak));
+  const addCorrect = useCallback(
+    (customPoints?: number) => {
+      const newStreak = streak + 1;
+      setStreak(newStreak);
+      setMaxStreak((prev) => Math.max(prev, newStreak));
 
-    // Check for streak milestones
-    if (STREAK_MILESTONES.includes(newStreak)) {
-      onStreakMilestone?.(newStreak);
-    }
+      // Check for streak milestones
+      if (STREAK_MILESTONES.includes(newStreak)) {
+        onStreakMilestone?.(newStreak);
+      }
 
-    // Calculate points with streak bonus
-    let pointsToAdd = customPoints ?? pointsPerCorrect;
-    if (streakBonus && newStreak > 1) {
-      pointsToAdd += (newStreak - 1) * streakBonusPoints;
-    }
+      // Calculate points with streak bonus
+      let pointsToAdd = customPoints ?? pointsPerCorrect;
+      if (streakBonus && newStreak > 1) {
+        pointsToAdd += (newStreak - 1) * streakBonusPoints;
+      }
 
-    setScoreState((prev) => ({
-      correct: prev.correct + 1,
-      total: prev.total + 1,
-      points: prev.points + pointsToAdd,
-    }));
-  }, [streak, pointsPerCorrect, streakBonus, streakBonusPoints, onStreakMilestone]);
+      setScoreState((prev) => ({
+        correct: prev.correct + 1,
+        total: prev.total + 1,
+        points: prev.points + pointsToAdd,
+      }));
+    },
+    [streak, pointsPerCorrect, streakBonus, streakBonusPoints, onStreakMilestone]
+  );
 
   const addIncorrect = useCallback(() => {
     setStreak(0);

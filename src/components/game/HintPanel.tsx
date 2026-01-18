@@ -59,9 +59,7 @@ export function HintPanel({
           ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
         `}
       >
-        <p className="px-4 pb-4 text-sm leading-relaxed">
-          {hint}
-        </p>
+        <p className="px-4 pb-4 text-sm leading-relaxed">{hint}</p>
       </div>
     </div>
   );
@@ -117,9 +115,7 @@ export function CollapsiblePanel({
           ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}
         `}
       >
-        <div className="px-4 pb-4">
-          {children}
-        </div>
+        <div className="px-4 pb-4">{children}</div>
       </div>
     </div>
   );

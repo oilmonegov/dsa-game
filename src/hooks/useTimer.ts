@@ -81,12 +81,15 @@ export function useTimer({
     setIsRunning(true);
   }, []);
 
-  const reset = useCallback((newTime?: number) => {
-    clearTimer();
-    setTime(newTime ?? initialTime);
-    setIsRunning(false);
-    setIsPaused(false);
-  }, [clearTimer, initialTime]);
+  const reset = useCallback(
+    (newTime?: number) => {
+      clearTimer();
+      setTime(newTime ?? initialTime);
+      setIsRunning(false);
+      setIsPaused(false);
+    },
+    [clearTimer, initialTime]
+  );
 
   const stop = useCallback(() => {
     clearTimer();

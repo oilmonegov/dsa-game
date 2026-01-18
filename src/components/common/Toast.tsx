@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { X, CheckCircle, AlertCircle, AlertTriangle, Info } from 'lucide-react';
 
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
@@ -42,6 +42,11 @@ export function Toast({
   const [isExiting, setIsExiting] = useState(false);
   const [progress, setProgress] = useState(100);
 
+  const handleClose = useCallback(() => {
+    setIsExiting(true);
+    setTimeout(() => onClose(id), 200);
+  }, [id, onClose]);
+
   useEffect(() => {
     if (duration <= 0) return;
 
@@ -58,12 +63,7 @@ export function Toast({
     }, 50);
 
     return () => clearInterval(interval);
-  }, [duration]);
-
-  const handleClose = () => {
-    setIsExiting(true);
-    setTimeout(() => onClose(id), 200);
-  };
+  }, [duration, handleClose]);
 
   return (
     <div

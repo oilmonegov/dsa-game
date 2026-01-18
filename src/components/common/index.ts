@@ -8,3 +8,5 @@ export { ToastProvider, useToast } from './ToastProvider';
 export { Confetti, useConfetti } from './Confetti';
 export { Modal, ConfirmModal } from './Modal';
 export { Tooltip, InfoTooltip } from './Tooltip';
+export { ErrorBoundary } from './ErrorBoundary';
+export { ErrorState, EmptyState } from './ErrorState';

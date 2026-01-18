@@ -77,9 +77,7 @@ export function CodeCompletion({ onBack }: CodeCompletionProps) {
   const allAnswered = useMemo(() => {
     if (!currentChallenge) return false;
 
-    const blanksAnswered = currentChallenge.blanks.every(
-      (blank) => blankAnswers[blank.id]?.trim()
-    );
+    const blanksAnswered = currentChallenge.blanks.every((blank) => blankAnswers[blank.id]?.trim());
 
     const complexityAnswered = currentChallenge.complexityQuestions
       ? currentChallenge.complexityQuestions.every((q) => complexityAnswers[q.id])
@@ -92,8 +90,8 @@ export function CodeCompletion({ onBack }: CodeCompletionProps) {
   const answeredCount = useMemo(() => {
     if (!currentChallenge) return { answered: 0, total: 0 };
 
-    const blanksAnswered = currentChallenge.blanks.filter(
-      (blank) => blankAnswers[blank.id]?.trim()
+    const blanksAnswered = currentChallenge.blanks.filter((blank) =>
+      blankAnswers[blank.id]?.trim()
     ).length;
 
     const complexityAnsweredCount = currentChallenge.complexityQuestions

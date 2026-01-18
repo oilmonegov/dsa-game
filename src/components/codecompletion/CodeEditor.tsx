@@ -97,11 +97,7 @@ export function CodeEditor({
                 {parts.map((part, partIndex) => {
                   if (typeof part === 'string') {
                     // Syntax highlighting for keywords
-                    return (
-                      <span key={partIndex}>
-                        {highlightSyntax(part)}
-                      </span>
-                    );
+                    return <span key={partIndex}>{highlightSyntax(part)}</span>;
                   } else {
                     // Blank input
                     const blank = challenge.blanks.find((b) => b.id === part.blankId);
@@ -146,7 +142,26 @@ export function CodeEditor({
 
 // Simple syntax highlighting
 function highlightSyntax(code: string): React.ReactNode {
-  const keywords = ['function', 'if', 'else', 'while', 'for', 'return', 'class', 'new', 'null', 'true', 'false', 'AND', 'OR', 'NOT', 'in', 'not', 'to', 'each'];
+  const keywords = [
+    'function',
+    'if',
+    'else',
+    'while',
+    'for',
+    'return',
+    'class',
+    'new',
+    'null',
+    'true',
+    'false',
+    'AND',
+    'OR',
+    'NOT',
+    'in',
+    'not',
+    'to',
+    'each',
+  ];
   const parts: React.ReactNode[] = [];
 
   // Split by words while preserving whitespace and punctuation

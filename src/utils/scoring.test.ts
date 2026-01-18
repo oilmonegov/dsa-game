@@ -112,9 +112,36 @@ describe('getImprovementAreas', () => {
 
   it('groups and sorts by category count', () => {
     const incorrectQuestions: Question[] = [
-      { id: 1, category: 'Trees', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
-      { id: 2, category: 'Trees', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
-      { id: 3, category: 'Traversals', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
+      {
+        id: 1,
+        category: 'Trees',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
+      {
+        id: 2,
+        category: 'Trees',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
+      {
+        id: 3,
+        category: 'Traversals',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
     ];
 
     const areas = getImprovementAreas(incorrectQuestions);
@@ -126,10 +153,46 @@ describe('getImprovementAreas', () => {
 
   it('limits to 3 areas', () => {
     const incorrectQuestions: Question[] = [
-      { id: 1, category: 'Trees', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
-      { id: 2, category: 'Traversals', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
-      { id: 3, category: 'Binary Trees', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
-      { id: 4, category: 'Algorithm Analysis', difficulty: 'easy', question: '', options: [], correctAnswer: 0, explanation: '', realWorld: '' },
+      {
+        id: 1,
+        category: 'Trees',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
+      {
+        id: 2,
+        category: 'Traversals',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
+      {
+        id: 3,
+        category: 'Binary Trees',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
+      {
+        id: 4,
+        category: 'Algorithm Analysis',
+        difficulty: 'easy',
+        question: '',
+        options: [],
+        correctAnswer: 0,
+        explanation: '',
+        realWorld: '',
+      },
     ];
 
     const areas = getImprovementAreas(incorrectQuestions);
