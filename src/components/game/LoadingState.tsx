@@ -16,10 +16,7 @@ export function LoadingState({
   }
 
   return (
-    <div
-      className="flex items-center justify-center"
-      style={{ minHeight }}
-    >
+    <div className="flex items-center justify-center" style={{ minHeight }}>
       <div className="text-center animate-fade-in">
         {variant === 'spinner' && (
           <LoadingSpinner size="xl" color="gradient" className="mx-auto mb-4" />
@@ -29,11 +26,7 @@ export function LoadingState({
             <LoadingDots color="primary" size="md" />
           </div>
         )}
-        {variant === 'default' && (
-          <div className="text-4xl mb-4 animate-bounce">
-            🎮
-          </div>
-        )}
+        {variant === 'default' && <div className="text-4xl mb-4 animate-bounce">🎮</div>}
         <p className="text-gray-600 font-medium">{message}</p>
       </div>
     </div>
@@ -87,18 +80,11 @@ interface ContentSkeletonProps {
   className?: string;
 }
 
-export function ContentSkeleton({
-  lines = 3,
-  className = '',
-}: ContentSkeletonProps) {
+export function ContentSkeleton({ lines = 3, className = '' }: ContentSkeletonProps) {
   return (
     <div className={`animate-pulse space-y-3 ${className}`}>
-      {[...Array(lines)].map((_, i) => (
-        <div
-          key={i}
-          className="h-4 bg-gray-200 rounded"
-          style={{ width: `${100 - i * 15}%` }}
-        />
+      {Array.from({ length: lines }, (_, i) => (
+        <div key={i} className="h-4 bg-gray-200 rounded" style={{ width: `${100 - i * 15}%` }} />
       ))}
     </div>
   );

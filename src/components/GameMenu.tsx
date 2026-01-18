@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Play, RefreshCw, Sparkles } from 'lucide-react';
+import { Play, RotateCcw, BookOpen } from 'lucide-react';
 import type { ModuleId } from '@/types';
 import { useGameStore } from '@/store';
-import { Card, ProgressBar, Button, Badge } from '@/components/common';
+import { Button } from '@/components/common';
 import { moduleConfigs } from '@/data/modules';
 import { calculatePercentage, isPassed } from '@/utils';
 
@@ -25,74 +25,55 @@ export function GameMenu({ onSelectModule }: GameMenuProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto animate-fade-in">
+    <div className="max-w-5xl mx-auto px-4 py-8">
       {/* Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 mb-4">
-          <Sparkles className="w-8 h-8 text-accent-500 animate-pulse-soft" />
-          <h1 className="text-3xl md:text-4xl font-bold gradient-text">
-            DSA Learning Game
-          </h1>
-          <Sparkles className="w-8 h-8 text-candy-500 animate-pulse-soft" />
-        </div>
-        <p className="text-gray-600 text-lg">CSC 731 - Data Structures & Algorithms</p>
+      <div className="text-center mb-10">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">DSA Learning Game</h1>
+        <p className="text-gray-500">CSC 731 — Data Structures & Algorithms</p>
       </div>
 
-      {/* Overall Progress Card */}
+      {/* Overall Progress */}
       {overallProgress && overallProgress.total > 0 && (
-        <Card
-          className="mb-8"
-          padding="md"
-          variant="gradient"
-          hover
-        >
-          <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
-            <span className="text-xl">📈</span>
-            Your Progress
-          </h2>
-          <div className="flex flex-wrap items-center gap-6">
-            <div className="flex-1 min-w-[200px]">
-              <ProgressBar
-                value={overallProgress.percentage}
-                max={100}
-                color={overallProgress.passed ? 'green' : 'gradient'}
-                size="md"
-                animated
-                striped={!overallProgress.passed}
-              />
-              <p className="text-sm text-gray-600 mt-2">
-                {overallProgress.correct} / {overallProgress.total} correct (
-                <span className="font-semibold">{overallProgress.percentage}%</span>)
+        <div className="bg-white border border-gray-200 rounded-lg p-5 mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-500 mb-1">Overall Progress</p>
+              <p className="text-2xl font-semibold text-gray-900">{overallProgress.percentage}%</p>
+              <p className="text-sm text-gray-500">
+                {overallProgress.correct} of {overallProgress.total} correct
               </p>
             </div>
-            <div className="text-center">
-              <span
-                className={`
-                  text-2xl font-bold flex items-center gap-2
-                  ${overallProgress.passed ? 'text-success-600' : 'text-coral-600'}
-                `}
-              >
-                {overallProgress.passed ? (
-                  <>
-                    <span className="text-3xl animate-bounce-in">✓</span>
-                    Passed
-                  </>
-                ) : (
-                  <>
-                    <span className="text-3xl">🎯</span>
-                    In Progress
-                  </>
-                )}
-              </span>
-              <p className="text-xs text-gray-500 mt-1">70% needed to pass</p>
+            <div className="text-right">
+              {overallProgress.passed ? (
+                <span className="inline-flex items-center gap-1.5 text-emerald-600 font-medium">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Passed
+                </span>
+              ) : (
+                <span className="text-sm text-gray-500">70% needed to pass</span>
+              )}
             </div>
           </div>
-        </Card>
+          <div className="mt-4 bg-gray-100 rounded-full h-2 overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-300 ${
+                overallProgress.passed ? 'bg-emerald-500' : 'bg-blue-500'
+              }`}
+              style={{ width: `${overallProgress.percentage}%` }}
+            />
+          </div>
+        </div>
       )}
 
-      {/* Module Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
-        {moduleConfigs.map((module, index) => {
+      {/* Module Grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {moduleConfigs.map((module) => {
           const moduleScore = scores[module.id];
           const hasAttempted = moduleScore && moduleScore.total > 0;
           const modulePassed = hasAttempted && isPassed(moduleScore.correct, moduleScore.total);
@@ -101,111 +82,86 @@ export function GameMenu({ onSelectModule }: GameMenuProps) {
             : 0;
 
           return (
-            <Card
+            <div
               key={module.id}
-              padding="none"
-              variant={module.available ? 'interactive' : 'default'}
               className={`
-                ${!module.available ? 'opacity-70' : ''}
+                bg-white border rounded-lg overflow-hidden
+                ${module.available ? 'border-gray-200 hover:border-gray-300' : 'border-gray-100 opacity-60'}
+                transition-colors
               `}
-              style={{ animationDelay: `${index * 50}ms` }}
             >
-              {/* Color Bar with gradient */}
-              <div className={`h-1.5 ${module.color} ${modulePassed ? 'shimmer' : ''}`} />
-
-              <div className="p-5">
-                {/* Icon and Title */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-4xl drop-shadow-sm">{module.icon}</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">{module.title}</h3>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      {!module.available && (
-                        <Badge variant="default" size="xs">Coming Soon</Badge>
-                      )}
-                      {modulePassed && (
-                        <Badge variant="success" size="xs" glow>
-                          Passed
-                        </Badge>
-                      )}
-                    </div>
+              {/* Module Header */}
+              <div className="p-4 border-b border-gray-100">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{module.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-gray-900 truncate">{module.title}</h3>
+                    {!module.available && (
+                      <span className="text-xs text-gray-400">Coming soon</span>
+                    )}
+                    {modulePassed && (
+                      <span className="text-xs text-emerald-600 font-medium">Passed</span>
+                    )}
                   </div>
                 </div>
+              </div>
 
-                {/* Description */}
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                  {module.description}
-                </p>
+              {/* Module Body */}
+              <div className="p-4">
+                <p className="text-sm text-gray-500 mb-4 line-clamp-2">{module.description}</p>
 
-                {/* Score Display */}
+                {/* Score */}
                 {hasAttempted && module.available && (
-                  <div className="border-t pt-3 mb-4">
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-gray-500">Best Score:</span>
-                      <span
-                        className={`font-semibold ${
-                          modulePassed ? 'text-success-600' : 'text-coral-600'
-                        }`}
-                      >
-                        {moduleScore.correct}/{moduleScore.total} ({modulePercentage}%)
+                  <div className="mb-4">
+                    <div className="flex justify-between text-sm mb-1.5">
+                      <span className="text-gray-500">Best score</span>
+                      <span className={modulePassed ? 'text-emerald-600' : 'text-gray-700'}>
+                        {modulePercentage}%
                       </span>
                     </div>
-                    <ProgressBar
-                      value={modulePercentage}
-                      max={100}
-                      size="sm"
-                      color={modulePassed ? 'green' : 'orange'}
-                      animated
-                    />
-                    <p className="text-xs text-gray-400 mt-2 flex items-center gap-1">
-                      <span>{moduleScore.attempts} attempt{moduleScore.attempts !== 1 ? 's' : ''}</span>
-                      <span className="text-gray-300">•</span>
-                      <span className="text-accent-500 font-medium">{moduleScore.points} pts</span>
-                    </p>
+                    <div className="bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${
+                          modulePassed ? 'bg-emerald-500' : 'bg-blue-500'
+                        }`}
+                        style={{ width: `${modulePercentage}%` }}
+                      />
+                    </div>
                   </div>
                 )}
 
-                {/* Action Buttons */}
+                {/* Actions */}
                 {module.available && (
                   <div className="flex gap-2">
                     <Button
-                      variant={hasAttempted ? 'secondary' : 'gradient'}
+                      variant={hasAttempted ? 'outline' : 'primary'}
+                      size="sm"
                       onClick={() => handleStartModule(module.id)}
                       fullWidth
-                      leftIcon={hasAttempted ? <RefreshCw size={16} /> : <Play size={16} />}
-                      bounce
+                      leftIcon={hasAttempted ? <RotateCcw size={14} /> : <Play size={14} />}
                     >
-                      {hasAttempted ? 'Play Again' : 'Start'}
+                      {hasAttempted ? 'Retry' : 'Start'}
                     </Button>
                     {hasAttempted && (
                       <Button
                         variant="ghost"
+                        size="sm"
                         onClick={() => handleStartModule(module.id, true)}
-                        title="Practice Mode"
-                        className="px-3"
+                        title="Practice mode"
                       >
-                        📝
+                        <BookOpen size={14} />
                       </Button>
                     )}
                   </div>
                 )}
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>
 
-      {/* Footer Info */}
-      <div className="mt-10 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
-          <span className="text-sm text-gray-500">
-            Complete all modules with 70% or higher to pass
-          </span>
-        </div>
-        <p className="mt-2 text-xs text-gray-400">
-          Your progress is saved automatically
-        </p>
-      </div>
+      {/* Footer */}
+      <p className="text-center text-sm text-gray-400 mt-8">Progress is saved automatically</p>
     </div>
   );
 }

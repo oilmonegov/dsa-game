@@ -135,7 +135,7 @@ function App() {
                     <span>CSC 731</span>
                   </div>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/oilmonegov/dsa-game"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-gray-600 transition-colors p-1 hover:bg-gray-100 rounded-lg"
@@ -156,9 +156,7 @@ function App() {
 
           {/* Main Content */}
           <main className="max-w-6xl mx-auto px-4 py-8">
-            <div className={currentView !== 'menu' ? 'animate-fade-in' : ''}>
-              {renderView()}
-            </div>
+            <div className={currentView !== 'menu' ? 'animate-fade-in' : ''}>{renderView()}</div>
           </main>
 
           {/* Footer */}
@@ -166,9 +164,8 @@ function App() {
             <div className="max-w-6xl mx-auto px-4 py-4">
               <div className="text-center text-sm text-gray-500">
                 <p>
-                  Built for{' '}
-                  <span className="font-medium text-gray-600">CSC 731</span>{' '}
-                  - Data Structures & Algorithms •{' '}
+                  Built for <span className="font-medium text-gray-600">CSC 731</span> - Data
+                  Structures & Algorithms •{' '}
                   <a
                     href="/docs/CSC731_Complete_Study_Guide.html"
                     className="text-primary-500 hover:text-primary-600 hover:underline transition-colors"

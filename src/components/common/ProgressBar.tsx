@@ -85,9 +85,7 @@ export function ProgressBar({
     <div className={className}>
       {/* Top label and milestone labels */}
       {labelPosition === 'top' && (
-        <div className="flex items-center justify-between mb-1">
-          {renderLabel()}
-        </div>
+        <div className="flex items-center justify-between mb-1">{renderLabel()}</div>
       )}
 
       {/* Progress bar container */}
@@ -129,9 +127,7 @@ export function ProgressBar({
                     className={`
                       w-3 h-3 rounded-full border-2 border-white
                       transition-all duration-300
-                      ${isReached
-                        ? `${colorStyles[color]} shadow-md scale-110`
-                        : 'bg-gray-300'}
+                      ${isReached ? `${colorStyles[color]} shadow-md scale-110` : 'bg-gray-300'}
                     `}
                   >
                     {milestone.icon && isReached && (
@@ -159,7 +155,7 @@ export function ProgressBar({
         {/* Celebration particles */}
         {showCelebration && (
           <div className="absolute inset-0 pointer-events-none overflow-visible">
-            {[...Array(8)].map((_, i) => (
+            {Array.from({ length: 8 }, (_, i) => (
               <span
                 key={i}
                 className="absolute right-0 top-1/2 animate-confetti"
@@ -177,9 +173,7 @@ export function ProgressBar({
 
       {/* Bottom/inline label */}
       {labelPosition === 'bottom' && (
-        <div className="flex items-center justify-end mt-1">
-          {renderLabel()}
-        </div>
+        <div className="flex items-center justify-end mt-1">{renderLabel()}</div>
       )}
 
       {labelPosition === 'inline' && (

@@ -1,9 +1,16 @@
-import { forwardRef, type ButtonHTMLAttributes, type MouseEvent, useState } from 'react';
+import { forwardRef, type ButtonHTMLAttributes } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'ghost' | 'gradient' | 'outline';
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'danger'
+  | 'ghost'
+  | 'outline'
+  | 'gradient';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -11,29 +18,24 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   bounce?: boolean;
-  ripple?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-md hover:shadow-lg',
-  secondary: 'bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-500',
-  success: 'bg-gradient-to-r from-mint-500 to-success-500 text-white hover:from-mint-600 hover:to-success-600 focus:ring-success-500 shadow-md hover:shadow-lg',
-  danger: 'bg-gradient-to-r from-red-500 to-rose-600 text-white hover:from-red-600 hover:to-rose-700 focus:ring-red-500 shadow-md hover:shadow-lg',
-  ghost: 'bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-500',
-  gradient: 'bg-gradient-to-r from-primary-500 via-accent-500 to-candy-500 text-white hover:from-primary-600 hover:via-accent-600 hover:to-candy-600 focus:ring-accent-500 shadow-md hover:shadow-lg',
-  outline: 'bg-transparent border-2 border-primary-500 text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
+  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+  secondary: 'bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-400',
+  success: 'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500',
+  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+  ghost: 'bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-400',
+  outline:
+    'bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-400',
+  gradient:
+    'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 focus:ring-purple-500',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
   sm: 'px-3 py-1.5 text-sm gap-1.5',
-  md: 'px-4 py-2 text-base gap-2',
-  lg: 'px-6 py-3 text-lg gap-2.5',
-};
-
-const iconSizeStyles: Record<ButtonSize, string> = {
-  sm: 'h-4 w-4',
-  md: 'h-5 w-5',
-  lg: 'h-6 w-6',
+  md: 'px-4 py-2 text-sm gap-2',
+  lg: 'px-5 py-2.5 text-base gap-2',
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -45,75 +47,37 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       leftIcon,
       rightIcon,
+      bounce = false,
       className = '',
       disabled,
       children,
-      bounce = false,
-      ripple = true,
-      onClick,
       ...props
     },
     ref
   ) => {
-    const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
     const isDisabled = disabled || loading;
-
-    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-      if (ripple && !isDisabled) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const id = Date.now();
-
-        setRipples((prev) => [...prev, { x, y, id }]);
-        setTimeout(() => {
-          setRipples((prev) => prev.filter((r) => r.id !== id));
-        }, 600);
-      }
-
-      onClick?.(e);
-    };
 
     return (
       <button
         ref={ref}
         disabled={isDisabled}
-        onClick={handleClick}
         className={`
-          relative inline-flex items-center justify-center
-          font-semibold rounded-xl
-          transition-all duration-200 ease-out
+          inline-flex items-center justify-center
+          font-medium rounded-lg
+          transition-all duration-150
           focus:outline-none focus:ring-2 focus:ring-offset-2
-          disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none
-          active:scale-[0.98]
-          overflow-hidden
+          disabled:opacity-50 disabled:cursor-not-allowed
           ${variantStyles[variant]}
           ${sizeStyles[size]}
           ${fullWidth ? 'w-full' : ''}
-          ${bounce && !isDisabled ? 'hover:-translate-y-0.5 active:translate-y-0' : ''}
+          ${bounce ? 'hover:scale-105 active:scale-95' : ''}
           ${className}
         `}
         {...props}
       >
-        {/* Ripple effect */}
-        {ripples.map((r) => (
-          <span
-            key={r.id}
-            className="absolute rounded-full bg-white/30 animate-ripple pointer-events-none"
-            style={{
-              left: r.x,
-              top: r.y,
-              width: '10px',
-              height: '10px',
-              marginLeft: '-5px',
-              marginTop: '-5px',
-            }}
-          />
-        ))}
-
         {loading ? (
           <svg
-            className={`animate-spin ${iconSizeStyles[size]}`}
+            className="animate-spin h-4 w-4"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -134,9 +98,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         ) : (
           <>
-            {leftIcon && <span className={`flex-shrink-0 ${iconSizeStyles[size]}`}>{leftIcon}</span>}
+            {leftIcon && <span className="flex-shrink-0">{leftIcon}</span>}
             <span>{children}</span>
-            {rightIcon && <span className={`flex-shrink-0 ${iconSizeStyles[size]}`}>{rightIcon}</span>}
+            {rightIcon && <span className="flex-shrink-0">{rightIcon}</span>}
           </>
         )}
       </button>
