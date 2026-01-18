@@ -203,3 +203,6 @@ export { TRAVERSAL_ALGORITHMS } from './traversal';
 
 // Re-export real-world match types
 export * from './realworld';
+
+// Re-export code completion types
+export * from './codecompletion';

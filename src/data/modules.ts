@@ -39,7 +39,7 @@ export const moduleConfigs: ModuleConfig[] = [
     description: 'Fill in missing parts of algorithm pseudocode and identify complexities.',
     icon: '💻',
     color: 'bg-pink-500',
-    available: false,
+    available: true,
   },
 ];
 

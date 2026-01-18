@@ -7,6 +7,7 @@ import { TheoryQuiz } from '@/components/quiz';
 import { DiagramChallenge } from '@/components/diagram';
 import { TraversalGame } from '@/components/traversal';
 import { RealWorldMatch } from '@/components/realworld';
+import { CodeCompletion } from '@/components/codecompletion';
 
 type AppView = 'menu' | 'theory' | 'diagrams' | 'traversals' | 'realWorld' | 'codeCompletion';
 
@@ -88,19 +89,7 @@ function App() {
       case 'realWorld':
         return <RealWorldMatch onBack={handleBackToMenu} />;
       case 'codeCompletion':
-        return (
-          <div className="text-center py-20">
-            <div className="text-5xl mb-4">🚧</div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">Coming Soon</h2>
-            <p className="text-gray-500 mb-4">This module is under development.</p>
-            <button
-              onClick={handleBackToMenu}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Back to Menu
-            </button>
-          </div>
-        );
+        return <CodeCompletion onBack={handleBackToMenu} />;
       default:
         return <GameMenu onSelectModule={handleSelectModule} />;
     }

@@ -3,3 +3,4 @@ export { moduleConfigs } from './modules';
 export { diagramChallenges } from './diagrams';
 export { traversalChallenges } from './traversals';
 export { realWorldChallenges } from './realworld';
+export { codeCompletionChallenges } from './codecompletion';

@@ -3,7 +3,7 @@ interface ProgressBarProps {
   max?: number;
   showLabel?: boolean;
   size?: 'sm' | 'md' | 'lg';
-  color?: 'blue' | 'green' | 'purple' | 'orange';
+  color?: 'blue' | 'green' | 'purple' | 'orange' | 'pink';
   animated?: boolean;
   className?: string;
 }
@@ -19,6 +19,7 @@ const colorStyles = {
   green: 'bg-gradient-to-r from-green-500 to-emerald-600',
   purple: 'bg-gradient-to-r from-purple-500 to-indigo-600',
   orange: 'bg-gradient-to-r from-orange-500 to-red-500',
+  pink: 'bg-gradient-to-r from-pink-500 to-rose-600',
 };
 
 export function ProgressBar({
