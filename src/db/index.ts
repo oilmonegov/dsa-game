@@ -1,0 +1,16 @@
+export {
+  initDatabase,
+  getDatabase,
+  saveScore,
+  getModuleScores,
+  getLatestModuleScore,
+  getAllModuleScores,
+  saveQuestionAttempt,
+  getQuestionAttempts,
+  getMostMissedQuestions,
+  getSetting,
+  setSetting,
+  getOverallProgress,
+  clearAllData,
+  exportDatabase,
+} from './database';

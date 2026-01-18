@@ -1,0 +1,51 @@
+name: Question
+description: Ask a question about the project
+title: "[Question]: "
+labels: ["question"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? We're here to help!
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: I'm wondering about...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What is your question about?
+      options:
+        - Usage/How-to
+        - Installation/Setup
+        - Contributing
+        - Technical/Architecture
+        - Course Content
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Any additional context that might help us answer your question.
+
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched the existing issues for similar questions
+          required: true
+        - label: I have checked the documentation/README
+          required: true

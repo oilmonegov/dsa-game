@@ -1,0 +1,75 @@
+# Labeler configuration for auto-labeling PRs
+# https://github.com/actions/labeler
+
+# Documentation changes
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - 'docs/**/*'
+
+# Source code changes
+source:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/**/*'
+
+# Component changes
+components:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/components/**/*'
+
+# Quiz module
+quiz:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/components/quiz/**/*'
+          - 'src/data/questions*'
+
+# Database/storage
+database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/db/**/*'
+
+# Test changes
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.test.ts'
+          - '**/*.test.tsx'
+          - '**/*.spec.ts'
+          - '**/*.spec.tsx'
+          - 'tests/**/*'
+
+# Configuration changes
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '*.config.*'
+          - 'tsconfig*.json'
+          - '.eslintrc*'
+          - '.prettierrc*'
+          - 'vite.config.*'
+          - 'tailwind.config.*'
+
+# CI/CD changes
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**/*'
+
+# Dependencies
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'package-lock.json'
+
+# Styling
+styling:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.css'
+          - 'tailwind.config.*'

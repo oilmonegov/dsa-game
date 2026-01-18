@@ -1,0 +1,32 @@
+# CODEOWNERS - Define code ownership for automatic review requests
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+* @chux
+
+# Frontend components
+/src/components/ @chux
+
+# Core game logic
+/src/store/ @chux
+/src/hooks/ @chux
+/src/utils/ @chux
+
+# Database layer
+/src/db/ @chux
+
+# Question content (may want content reviewers)
+/src/data/ @chux
+
+# Build and configuration
+/vite.config.ts @chux
+/tailwind.config.js @chux
+/tsconfig*.json @chux
+/.eslintrc* @chux
+
+# CI/CD and GitHub configuration
+/.github/ @chux
+
+# Documentation
+/docs/ @chux
+/*.md @chux

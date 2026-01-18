@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# post-checkout hook
+# Runs after git checkout or git switch
+# $1 = ref of previous HEAD
+# $2 = ref of new HEAD
+# $3 = flag (1 = branch checkout, 0 = file checkout)
+
+PREV_HEAD=$1
+NEW_HEAD=$2
+CHECKOUT_TYPE=$3
+
+# Only run on branch checkouts, not file checkouts
+if [ "$CHECKOUT_TYPE" = "1" ]; then
+  # Check if package.json changed
+  if git diff --name-only "$PREV_HEAD" "$NEW_HEAD" | grep -qE "^package\.json$|^package-lock\.json$|^pnpm-lock\.yaml$|^yarn\.lock$"; then
+    echo "📦 Dependencies changed. Running npm install..."
+    npm install
+  fi
+
+  # Check if .env.example changed (remind to update .env)
+  if git diff --name-only "$PREV_HEAD" "$NEW_HEAD" | grep -qE "^\.env\.example$"; then
+    echo "⚠️  .env.example has changed. Please update your .env file if needed."
+  fi
+
+  # Clean up any stale TypeScript build info
+  if [ -f "tsconfig.tsbuildinfo" ]; then
+    rm -f tsconfig.tsbuildinfo
+  fi
+fi
