@@ -1,4 +1,10 @@
 export { Button } from './Button';
-export { Card, CardHeader, CardBody, CardFooter } from './Card';
+export { Card, CardHeader, CardBody, CardFooter, CardResult } from './Card';
 export { ProgressBar } from './ProgressBar';
-export { Badge } from './Badge';
+export { Badge, DotBadge } from './Badge';
+export { LoadingSpinner, LoadingOverlay, LoadingDots } from './LoadingSpinner';
+export { Toast } from './Toast';
+export { ToastProvider, useToast } from './ToastProvider';
+export { Confetti, useConfetti } from './Confetti';
+export { Modal, ConfirmModal } from './Modal';
+export { Tooltip, InfoTooltip } from './Tooltip';

@@ -9,33 +9,179 @@
   }
 
   body {
-    @apply antialiased text-gray-900;
+    @apply antialiased text-gray-900 bg-gradient-to-br from-slate-50 via-white to-slate-100;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    min-height: 100vh;
   }
 
   /* Better focus styles */
   *:focus-visible {
     @apply outline-none ring-2 ring-blue-500 ring-offset-2;
   }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-blue-200 text-blue-900;
+  }
 }
 
 /* Custom component styles */
 @layer components {
-  /* Animation utilities */
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+  /* Glass morphism card */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
   }
 
-  .animate-shake {
-    animation: shake 0.5s ease-in-out;
+  .glass-dark {
+    @apply bg-gray-900/70 backdrop-blur-md border border-gray-700/30 shadow-lg;
   }
 
-  .animate-pulse-success {
-    animation: pulseSuccess 0.5s ease-in-out;
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500;
   }
 
-  .animate-slide-up {
-    animation: slideUp 0.3s ease-out;
+  .gradient-text-success {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-emerald-500;
+  }
+
+  .gradient-text-warning {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-500;
+  }
+
+  /* Card glow effects */
+  .card-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .card-glow::before {
+    content: '';
+    @apply absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 rounded-2xl opacity-0 blur transition-opacity duration-300;
+  }
+
+  .card-glow:hover::before {
+    @apply opacity-30;
+  }
+
+  .card-glow > * {
+    @apply relative;
+  }
+
+  /* Interactive card */
+  .card-interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-interactive:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+
+  .card-interactive:active {
+    @apply translate-y-0 shadow-lg;
+  }
+
+  /* Playful button press effect */
+  .btn-playful {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .btn-playful:hover {
+    @apply -translate-y-0.5 shadow-lg;
+  }
+
+  .btn-playful:active {
+    @apply translate-y-0 shadow-md scale-[0.98];
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-playful {
+    @apply bg-gradient-to-br from-blue-500 via-violet-500 to-pink-500;
+  }
+
+  .bg-gradient-success {
+    @apply bg-gradient-to-br from-teal-500 to-emerald-500;
+  }
+
+  .bg-gradient-warning {
+    @apply bg-gradient-to-br from-orange-400 to-amber-500;
+  }
+
+  .bg-gradient-error {
+    @apply bg-gradient-to-br from-red-500 to-rose-600;
+  }
+
+  /* Animated stripes for progress bars */
+  .progress-stripes {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 40px 40px;
+  }
+
+  /* Celebration shimmer effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Badge pulse animation */
+  .badge-pulse {
+    @apply relative;
+  }
+
+  .badge-pulse::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-current opacity-40;
+    animation: badgePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Floating action button */
+  .fab {
+    @apply rounded-full p-4 shadow-lg transition-all duration-300;
+  }
+
+  .fab:hover {
+    @apply shadow-xl -translate-y-1;
+  }
+
+  /* Toast styles */
+  .toast {
+    @apply rounded-xl px-4 py-3 shadow-xl flex items-center gap-3;
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .toast-success {
+    @apply bg-gradient-to-r from-teal-500 to-emerald-500 text-white;
+  }
+
+  .toast-error {
+    @apply bg-gradient-to-r from-red-500 to-rose-600 text-white;
+  }
+
+  .toast-warning {
+    @apply bg-gradient-to-r from-orange-400 to-amber-500 text-white;
+  }
+
+  .toast-info {
+    @apply bg-gradient-to-r from-blue-500 to-violet-500 text-white;
   }
 }
 
@@ -63,6 +209,83 @@
 
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background-color: theme('colors.gray.400');
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text shadow utilities */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Backdrop utilities */
+  .backdrop-saturate-150 {
+    backdrop-filter: saturate(150%);
+  }
+
+  /* Animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+
+  /* Perspective utilities for 3D effects */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-inherit p-[2px];
+    background: linear-gradient(135deg, theme('colors.primary.500'), theme('colors.accent.500'), theme('colors.candy.500'));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 }
 
@@ -114,11 +337,69 @@
   }
 }
 
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 /* Cytoscape container */
 #cy {
   width: 100%;
   height: 400px;
   border: 2px solid theme('colors.gray.200');
-  border-radius: 0.5rem;
-  background: theme('colors.gray.50');
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, theme('colors.gray.50') 0%, theme('colors.white') 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+/* React-specific styles */
+.react-toast-container {
+  @apply fixed bottom-4 right-4 z-50 flex flex-col gap-2;
+}
+
+/* Animation for staggered children */
+.stagger-children > * {
+  @apply opacity-0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 350ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 450ms; }
