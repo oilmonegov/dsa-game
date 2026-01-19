@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from 'react';
 import cytoscape, { Core, NodeSingular, EventObject, StylesheetStyle } from 'cytoscape';
 import type { CytoscapeNode, CytoscapeEdge } from '@/types';
 
@@ -152,8 +152,22 @@ export function CytoscapeGraph({
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
   const edgeSourceRef = useRef<string | null>(null);
+  const draggingNodeRef = useRef<string | null>(null);
 
-  // Initialize Cytoscape
+  // Create a stable key based on node/edge IDs to detect structural changes
+  const structureKey = useMemo(() => {
+    const nodeIds = nodes
+      .map((n) => n.data.id)
+      .sort()
+      .join(',');
+    const edgeIds = edges
+      .map((e) => `${e.data.source}-${e.data.target}`)
+      .sort()
+      .join(',');
+    return `${nodeIds}|${edgeIds}`;
+  }, [nodes, edges]);
+
+  // Initialize Cytoscape only when structure changes
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -186,7 +200,55 @@ export function CytoscapeGraph({
     return () => {
       cy.destroy();
     };
-  }, [nodes, edges, draggableNodeIds]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [structureKey]);
+
+  // Update node positions and classes without recreating Cytoscape
+  useEffect(() => {
+    const cy = cyRef.current;
+    if (!cy) return;
+
+    nodes.forEach((node) => {
+      const cyNode = cy.getElementById(node.data.id);
+      if (cyNode.length > 0) {
+        // Skip position update for node being dragged to avoid snapping back
+        const isBeingDragged = draggingNodeRef.current === node.data.id;
+
+        // Update position if it changed (but not if being dragged)
+        if (node.position && !isBeingDragged) {
+          const currentPos = cyNode.position();
+          // Use tolerance for floating point comparison
+          const dx = Math.abs(currentPos.x - node.position.x);
+          const dy = Math.abs(currentPos.y - node.position.y);
+          if (dx > 0.1 || dy > 0.1) {
+            cyNode.position(node.position);
+          }
+        }
+
+        // Update label if it changed
+        if (node.data.label !== cyNode.data('label')) {
+          cyNode.data('label', node.data.label);
+        }
+
+        // Update classes
+        const currentClasses = cyNode.classes().join(' ');
+        const newClasses = node.classes || '';
+        if (currentClasses !== newClasses) {
+          cyNode.classes(newClasses);
+        }
+      }
+    });
+
+    // Update draggable state
+    cy.nodes().forEach((cyNode: NodeSingular) => {
+      const nodeId = cyNode.id();
+      if (draggableNodeIds.includes(nodeId)) {
+        cyNode.grabify();
+      } else {
+        cyNode.ungrabify();
+      }
+    });
+  }, [nodes, draggableNodeIds]);
 
   // Handle node click
   const handleNodeClick = useCallback(
@@ -215,12 +277,21 @@ export function CytoscapeGraph({
     [edgeCreationMode, onEdgeCreate, onNodeClick]
   );
 
+  // Handle node drag start
+  const handleNodeDragStart = useCallback((event: EventObject) => {
+    const node = event.target as NodeSingular;
+    draggingNodeRef.current = node.id();
+  }, []);
+
   // Handle node drag end
   const handleNodeDragEnd = useCallback(
     (event: EventObject) => {
       const node = event.target as NodeSingular;
       const nodeId = node.id();
       const position = node.position();
+
+      // Clear dragging state
+      draggingNodeRef.current = null;
 
       if (onNodeDrop && draggableNodeIds.includes(nodeId)) {
         onNodeDrop(nodeId, { x: position.x, y: position.y });
@@ -235,13 +306,15 @@ export function CytoscapeGraph({
     if (!cy) return;
 
     cy.on('tap', 'node', handleNodeClick);
+    cy.on('grab', 'node', handleNodeDragStart);
     cy.on('dragfree', 'node', handleNodeDragEnd);
 
     return () => {
       cy.off('tap', 'node', handleNodeClick);
+      cy.off('grab', 'node', handleNodeDragStart);
       cy.off('dragfree', 'node', handleNodeDragEnd);
     };
-  }, [handleNodeClick, handleNodeDragEnd]);
+  }, [handleNodeClick, handleNodeDragStart, handleNodeDragEnd]);
 
   // Update selected nodes styling
   useEffect(() => {
